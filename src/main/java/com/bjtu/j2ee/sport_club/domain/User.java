@@ -40,6 +40,6 @@ public class User {
 
 	@ManyToMany
 	@JoinTable(name = "user_course",joinColumns = @JoinColumn(name = "user_id"),
-			inverseJoinColumns = @JoinColumn(name = "authority_id"))
+			inverseJoinColumns = @JoinColumn(name = "course_id"))
 	private List<Course> CourseList;
 }
