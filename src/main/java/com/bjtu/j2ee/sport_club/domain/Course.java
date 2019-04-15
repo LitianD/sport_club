@@ -21,11 +21,11 @@ public class Course {
     private Integer id;
 
     @ManyToOne(cascade={CascadeType.MERGE,CascadeType.REFRESH},optional=false)//可选属性optional=false,表示author不能为空。删除文章，不影响用户
-    @JoinColumn(name="id")//设置在article表中的关联字段(外键)
+    @JoinColumn(name="coach")//设置在article表中的关联字段(外键)
     private Coach coach;
 
     @ManyToOne(cascade={CascadeType.MERGE,CascadeType.REFRESH},optional=false)//可选属性optional=false,表示author不能为空。删除文章，不影响用户
-    @JoinColumn(name="id")//设置在article表中的关联字段(外键)
+    @JoinColumn(name="gym")//设置在article表中的关联字段(外键)
     private Gym gym;
 
     @NotEmpty(message = "cost is required.")
