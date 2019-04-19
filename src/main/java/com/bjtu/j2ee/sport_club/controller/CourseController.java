@@ -23,8 +23,17 @@ public class CourseController {
 	public ResCourseList getCourses()
 	{
 		ResCourseList resCourseList = new ResCourseList();
-
+		resCourseList = courseService.getCourseList();
 		return resCourseList;
+	}
+
+	@RequestMapping(value = {"/coursecontent","/coursecontent/"})
+	@ResponseBody
+	public ResCourse getCourse(ReqCourse reqCourse)
+	{
+		ResCourse resCourse = new ResCourse();
+		resCourse = courseService.getCourse(reqCourse);
+		return resCourse;
 	}
 
 	@RequestMapping(value = {"/mycourses","/mycourses/"})
@@ -32,7 +41,7 @@ public class CourseController {
 	public ResMyCourse getMyCourse(@RequestBody ReqMyCourse reqMyCourse)
 	{
 		ResMyCourse resMyCourse = new ResMyCourse();
-
+		resMyCourse = courseService.getMyCourse(reqMyCourse);
 		return resMyCourse;
 	}
 
@@ -41,7 +50,7 @@ public class CourseController {
 	public ResCoach getCouaches(@RequestBody ReqCoach reqCoach)
 	{
 		ResCoach resCoach = new ResCoach();
-
+		resCoach = courseService.getCoach(reqCoach);
 		return resCoach;
 	}
 }

@@ -1,8 +1,6 @@
 package com.bjtu.j2ee.sport_club.controller;
 
 import com.bjtu.j2ee.sport_club.bean.*;
-import com.bjtu.j2ee.sport_club.domain.User;
-import com.bjtu.j2ee.sport_club.domain.test;
 import com.bjtu.j2ee.sport_club.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
