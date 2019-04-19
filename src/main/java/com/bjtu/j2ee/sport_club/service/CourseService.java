@@ -10,5 +10,5 @@ public interface CourseService {
     //查看课程信息
     //Course getCourse(Integer courseId);
 
-    Page<Course> find(Integer page, Integer size);
+    //Page<Course> find(Integer page, Integer size);
 }
