@@ -1,108 +1,147 @@
 package com.bjtu.j2ee.sport_club.bean;
 
+import java.util.List;
+
 public class ResCourseList {
 
     /**
-     * id :
-     * name :
-     * coachName :
-     * coachID :
-     * gymName :
-     * gymID :
-     * address :
-     * cost :
-     * content: :
-     * Time :
+     * code :
+     * error_msg :
+     * data : [{"id":"","name":"","coachName":"","coachID":"","gymName":"","gymID":"","address":"","cost":"","content:":"","Time":""},{"id":"","name":"","coachName":"","coachID":"","gymName":"","gymID":"","address":"","cost":"","content:":"","Time":""},"..."]
      */
 
-    private String id;
-    private String name;
-    private String coachName;
-    private String coachID;
-    private String gymName;
-    private String gymID;
-    private String address;
-    private String cost;
-    private String _$Content270; // FIXME check this code
-    private String Time;
+    private String code;
+    private String error_msg;
+    private List<DataBean> data;
 
-    public String getId() {
-        return id;
+    public String getCode() {
+        return code;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setCode(String code) {
+        this.code = code;
     }
 
-    public String getName() {
-        return name;
+    public String getError_msg() {
+        return error_msg;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setError_msg(String error_msg) {
+        this.error_msg = error_msg;
     }
 
-    public String getCoachName() {
-        return coachName;
+    public List<DataBean> getData() {
+        return data;
     }
 
-    public void setCoachName(String coachName) {
-        this.coachName = coachName;
+    public void setData(List<DataBean> data) {
+        this.data = data;
     }
 
-    public String getCoachID() {
-        return coachID;
-    }
+    public static class DataBean {
+        /**
+         * id :
+         * name :
+         * coachName :
+         * coachID :
+         * gymName :
+         * gymID :
+         * address :
+         * cost :
+         * content: :
+         * Time :
+         */
 
-    public void setCoachID(String coachID) {
-        this.coachID = coachID;
-    }
+        private String id;
+        private String name;
+        private String coachName;
+        private String coachID;
+        private String gymName;
+        private String gymID;
+        private String address;
+        private String cost;
+        //@com.google.gson.annotations.SerializedName("content:")
+        private String _$Content206; // FIXME check this code
+        private String Time;
 
-    public String getGymName() {
-        return gymName;
-    }
+        public String getId() {
+            return id;
+        }
 
-    public void setGymName(String gymName) {
-        this.gymName = gymName;
-    }
+        public void setId(String id) {
+            this.id = id;
+        }
 
-    public String getGymID() {
-        return gymID;
-    }
+        public String getName() {
+            return name;
+        }
 
-    public void setGymID(String gymID) {
-        this.gymID = gymID;
-    }
+        public void setName(String name) {
+            this.name = name;
+        }
 
-    public String getAddress() {
-        return address;
-    }
+        public String getCoachName() {
+            return coachName;
+        }
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
+        public void setCoachName(String coachName) {
+            this.coachName = coachName;
+        }
 
-    public String getCost() {
-        return cost;
-    }
+        public String getCoachID() {
+            return coachID;
+        }
 
-    public void setCost(String cost) {
-        this.cost = cost;
-    }
+        public void setCoachID(String coachID) {
+            this.coachID = coachID;
+        }
 
-    public String get_$Content270() {
-        return _$Content270;
-    }
+        public String getGymName() {
+            return gymName;
+        }
 
-    public void set_$Content270(String _$Content270) {
-        this._$Content270 = _$Content270;
-    }
+        public void setGymName(String gymName) {
+            this.gymName = gymName;
+        }
 
-    public String getTime() {
-        return Time;
-    }
+        public String getGymID() {
+            return gymID;
+        }
 
-    public void setTime(String Time) {
-        this.Time = Time;
+        public void setGymID(String gymID) {
+            this.gymID = gymID;
+        }
+
+        public String getAddress() {
+            return address;
+        }
+
+        public void setAddress(String address) {
+            this.address = address;
+        }
+
+        public String getCost() {
+            return cost;
+        }
+
+        public void setCost(String cost) {
+            this.cost = cost;
+        }
+
+        public String get_$Content206() {
+            return _$Content206;
+        }
+
+        public void set_$Content206(String _$Content206) {
+            this._$Content206 = _$Content206;
+        }
+
+        public String getTime() {
+            return Time;
+        }
+
+        public void setTime(String Time) {
+            this.Time = Time;
+        }
     }
 }
