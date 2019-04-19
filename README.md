@@ -1,6 +1,6 @@
 # UserController
 ## post /signup/
-###Parameters
+### Parameters
 	{
 		"username":"",
 		"password":"",
@@ -11,7 +11,7 @@
 		"age":"",
 		"sex":""
 	}
-###response
+### response
 code=0 data存在
 
 	{
@@ -29,14 +29,14 @@ code=0 data存在
 
 
 ## post /signin/
-###Parameters
+### Parameters
 
 	{
 		"username":"",
 		"password":""
 	}
 
-###response
+### response
 
 	{
 	"code":"",
@@ -51,9 +51,9 @@ code=0 data存在
 			}
 	}
 
-##post /update
+## post /update
 
-###Parameters
+### Parameters
 
 	{
 		"username":"",
@@ -66,7 +66,7 @@ code=0 data存在
 		"sex":""
 	}
 
-###response
+### response
 
 	{
 	"code":"",
@@ -83,12 +83,12 @@ code=0 data存在
 
 
 # CourseController
-##get/courses/
-###Parameters
+## get/courses/
+### Parameters
 {
 	
 }
-###response
+### response
 
 	{
 
@@ -131,12 +131,12 @@ code=0 data存在
 	...
 	]
 	}
-##post/course/
-###Parameters
+## post/course/
+### Parameters
 	{
 	"id":""
 	}
-###response
+### response
 	{
 	"code":"",
 	"error_msg":"",
@@ -165,12 +165,12 @@ code=0 data存在
 		"time":""
 	}
 	}
-##post/mycourses
-###Parameters
+## post/mycourses
+### Parameters
 	{
 	"id":""
 	}
-###response
+### response
 	{
 	"code":"",
 	"error_msg":"",
@@ -210,13 +210,13 @@ code=0 data存在
 	}
 	]
 	}
-##post/coaches
-###Parameters
+## post/coaches
+### Parameters
 	{
 	"id":"",
 	"name":""
 	}
-###response
+### response
 	{
 	"code":"",
 	"error_msg":"",
