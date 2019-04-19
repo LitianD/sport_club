@@ -25,8 +25,8 @@ public class UserController {
 	@ResponseBody
 	public ResSignup signUp(@RequestBody ReqSignup reqSignup)
 	{
-		ResSignup resSignup = new ResSignup();
-
+		ResSignup resSignup;
+		resSignup=userService.createUser(reqSignup);
 		return resSignup;
 	}
 
@@ -34,8 +34,8 @@ public class UserController {
 	@ResponseBody
 	public ResSignin signIn(@RequestBody ReqSignin reqSignin)
 	{
-		ResSignin resSignin = new ResSignin();
-
+		ResSignin resSignin;
+		resSignin = userService.searchUser(reqSignin);
 		return resSignin;
 	}
 
@@ -43,8 +43,8 @@ public class UserController {
 	@ResponseBody
 	public ResUpdate update(@RequestBody ReqUpdate reqUpdate)
 	{
-		ResUpdate resUpdate = new ResUpdate();
-
+		ResUpdate resUpdate;
+		resUpdate = userService.updateUser(reqUpdate);
 		return resUpdate;
 	}
 
