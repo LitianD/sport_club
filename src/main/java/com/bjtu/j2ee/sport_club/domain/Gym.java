@@ -18,6 +18,9 @@ public class Gym {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+
+    private String name;
+
     @NotEmpty(message = "Address is required.")
     private String address;
 

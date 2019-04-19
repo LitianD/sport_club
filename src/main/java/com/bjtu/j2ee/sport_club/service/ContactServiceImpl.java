@@ -21,7 +21,7 @@ public class ContactServiceImpl implements ContactService {
     public Iterable<Contact> getAllContacts() {
         return this.contactRepository.findAll();
     }
-    
+
     @Override
     public Contact getContactById(Integer id) {
         return this.contactRepository.findById(id).orElse(null);
