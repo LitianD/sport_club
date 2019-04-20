@@ -17,7 +17,7 @@ public class ReqSignup {
     private String password;
     private String repasswordd;
     //@com.google.gson.annotations.SerializedName("“name”")
-    private String _$Name270; // FIXME check this code
+    private String Name; // FIXME check this code
     private String mail;
     private String phonenumber;
     private String age;
@@ -47,12 +47,12 @@ public class ReqSignup {
         this.repasswordd = repasswordd;
     }
 
-    public String get_$Name270() {
-        return _$Name270;
+    public String getName() {
+        return Name;
     }
 
-    public void set_$Name270(String _$Name270) {
-        this._$Name270 = _$Name270;
+    public void setName(String Name) {
+        this.Name = Name;
     }
 
     public String getMail() {
