@@ -13,7 +13,7 @@ public class CourseController {
 	CourseService courseService;
 
 	@Autowired
-	public void setCourseService(CourseService courseService)
+	public void setCourseService(@RequestBody CourseService courseService)
 	{
 		this.courseService = courseService;
 	}
@@ -29,7 +29,7 @@ public class CourseController {
 
 	@RequestMapping(value = {"/coursecontent","/coursecontent/"})
 	@ResponseBody
-	public ResCourse getCourse(ReqCourse reqCourse)
+	public ResCourse getCourse(@RequestBody ReqCourse reqCourse)
 	{
 		ResCourse resCourse = new ResCourse();
 		resCourse = courseService.getCourse(reqCourse);
