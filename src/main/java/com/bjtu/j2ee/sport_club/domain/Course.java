@@ -33,7 +33,7 @@ public class Course {
 
     @NotEmpty(message = "cost is required.")
     @Size(min = 0, message = "cost must be bigger or equal to zero")
-    private double cost;
+    private Double cost;
 
     @NotEmpty(message = "Content is required.")
     private String content;
