@@ -47,8 +47,7 @@ public class ResUpdate {
          */
 
         private String username;
-        //@com.google.gson.annotations.SerializedName("“name”")
-        private String _$Name148; // FIXME check this code
+        private String Name;
         private String mail;
         private String phonenumber;
         private String age;
@@ -62,12 +61,12 @@ public class ResUpdate {
             this.username = username;
         }
 
-        public String get_$Name148() {
-            return _$Name148;
+        public String getName() {
+            return Name;
         }
 
-        public void set_$Name148(String _$Name148) {
-            this._$Name148 = _$Name148;
+        public void setName(String Name) {
+            this.Name = Name;
         }
 
         public String getMail() {

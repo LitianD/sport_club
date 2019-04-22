@@ -14,10 +14,12 @@ public class ReqUpdate {
      */
 
     private String username;
+    private String oldusername;
     private String password;
-    private String repasswordd;
+    private  String oldpassword;
+    private String repassword;
     //@com.google.gson.annotations.SerializedName("“name”")
-    private String _$Name270; // FIXME check this code
+    private String Name; // FIXME check this code
     private String mail;
     private String phonenumber;
     private String age;
@@ -31,28 +33,45 @@ public class ReqUpdate {
         this.username = username;
     }
 
+    public String getOldusername() {
+        return oldusername;
+    }
+
+    public void setOldusername(String oldusername) {
+        this.oldusername = oldusername;
+    }
+
     public String getPassword() {
         return password;
+    }
+
+    public void setOldpassword(String oldpassword) {
+        this.oldpassword = oldpassword;
+    }
+
+    public String getOldpassword() {
+        return oldpassword;
     }
 
     public void setPassword(String password) {
         this.password = password;
     }
 
-    public String getRepasswordd() {
-        return repasswordd;
+
+    public String getRepassword() {
+        return repassword;
     }
 
-    public void setRepasswordd(String repasswordd) {
-        this.repasswordd = repasswordd;
+    public void setRepassword(String repasswordd) {
+        this.repassword = repassword;
     }
 
-    public String get_$Name270() {
-        return _$Name270;
+    public String getName() {
+        return Name;
     }
 
-    public void set_$Name270(String _$Name270) {
-        this._$Name270 = _$Name270;
+    public void setName(String Name) {
+        this.Name = Name;
     }
 
     public String getMail() {

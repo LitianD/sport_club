@@ -37,6 +37,15 @@ public class UserServiceImpl implements UserService {
 			user.setMail(reqSignup.getMail());
 			user.setAge(Integer.valueOf(reqSignup.getAge()));
 			userRepository.save(user);
+
+			ResSignup.DataBean data = new ResSignup.DataBean();
+			data.setName(user.getName());
+			data.setAge(String.valueOf(user.getAge()));
+			data.setMail(user.getMail());
+			data.setPhonenumber(user.getPhoneNumber());
+			data.setSex(String.valueOf(user.getSex()));
+
+			resSignup.setData(data);
 		}
 
 		return resSignup;
@@ -44,15 +53,80 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public ResSignin searchUser(ReqSignin reqSignin){
-		ResSignin resSignin = new ResSignin();
+		ResSignin res = new ResSignin();
+		List<User> userList = userRepository.findByUsernameAndPassword(reqSignin.getUsername(),reqSignin.getPassword());
+		if (userList.size()==1)
+		{
+			User user = userList.get(0);
+			res.setCode("0");
+			ResSignin.DataBean data = new ResSignin.DataBean();
+			data.setName(user.getName());
+			data.setAge(String.valueOf(user.getAge()));
+			data.setMail(user.getMail());
+			data.setPhonenumber(user.getPhoneNumber());
+			data.setSex(String.valueOf(user.getSex()));
 
-		return resSignin;
+			res.setData(data);
+		}
+		else
+		{
+			res.setCode("-1");
+			res.setError_msg("密码错误或用户名不存在");
+		}
+
+		return res;
 	}
 
 	@Override
 	public ResUpdate updateUser(ReqUpdate reqUpdate){
-		ResUpdate respdate= new ResUpdate();
+		ResUpdate res= new ResUpdate();
+		List<User> userList = userRepository.findByUsernameAndPassword(reqUpdate.getOldusername(),reqUpdate.getOldpassword());
+		if(userList.size()==1)
+		{
+			User user = userList.get(0);
 
-		return respdate;
+			if(reqUpdate.getPassword().equals(reqUpdate.getRepassword()))
+			{
+				List<User> newuserList = userRepository.findByUsernameAndPassword(reqUpdate.getUsername(),reqUpdate.getOldpassword());
+				if(newuserList.size()==1)
+				{
+					res.setCode("-1");
+					res.setError_msg("用户名已经存在");
+				}
+				else
+				{
+					user.setUsername(reqUpdate.getUsername());
+					user.setName(reqUpdate.getName());
+					user.setPassword(reqUpdate.getPassword());
+					user.setMail(reqUpdate.getMail());
+					user.setAge(Integer.valueOf(reqUpdate.getAge()));
+					userRepository.delete(userList.get(0));
+					userRepository.save(user);
+
+					res.setCode("0");
+
+					ResUpdate.DataBean data = new ResUpdate.DataBean();
+					data.setName(user.getName());
+					data.setUsername(user.getUsername());
+					data.setAge(String.valueOf(user.getAge()));
+					data.setMail(user.getMail());
+					data.setPhonenumber(user.getPhoneNumber());
+					data.setSex(String.valueOf(user.getSex()));
+
+					res.setData(data);
+				}
+			}
+			else
+			{
+				res.setCode("-1");
+				res.setError_msg("两次密码不一致");
+			}
+		}
+		else
+		{
+			res.setCode("-1");
+			res.setError_msg("旧密码错误");
+		}
+		return res;
 	}
 }

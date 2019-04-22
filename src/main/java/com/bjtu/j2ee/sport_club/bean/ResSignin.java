@@ -48,7 +48,7 @@ public class ResSignin {
 
         private String username;
         //@com.google.gson.annotations.SerializedName("“name”")
-        private String _$Name167; // FIXME check this code
+        private String Name; // FIXME check this code
         private String mail;
         private String phonenumber;
         private String age;
@@ -62,12 +62,12 @@ public class ResSignin {
             this.username = username;
         }
 
-        public String get_$Name167() {
-            return _$Name167;
+        public String getName() {
+            return Name;
         }
 
-        public void set_$Name167(String _$Name167) {
-            this._$Name167 = _$Name167;
+        public void setName(String _$Name167) {
+            this.Name = Name;
         }
 
         public String getMail() {

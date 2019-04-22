@@ -57,7 +57,9 @@ code=0 data存在
 
 	{
 		"username":"",
+		"oldusername":"",
 		"password":"",
+		"oldpassword":"",
 		"repasswordd":"",
 		“name”:"",
 		"mail":"",
