@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.Id;
 
@@ -17,6 +18,7 @@ import javax.persistence.Id;
 
 @Entity
 @Data
+@EntityListeners(AuditingEntityListener.class)
 public class Coach implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
