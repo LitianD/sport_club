@@ -1,11 +1,11 @@
 package com.bjtu.j2ee.sport_club.service;
 
-import com.bjtu.j2ee.sport_club.domain.Course;
+import com.bjtu.j2ee.sport_club.bean.*;
+
 
 public interface CourseService {
-
-    //使用分页技术
-    Iterable<Course> getAllCourses();
-    //查看课程信息
-    Course getCourse(Integer courseId);
+    ResCourseList getCourseList();
+    ResCourse getCourse(ReqCourse reqCourse);
+    ResCoach getCoach(ReqCoach reqCoach);
+    ResMyCourse getMyCourse(ReqMyCourse reqMyCourse);
 }

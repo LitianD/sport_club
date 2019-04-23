@@ -1,12 +1,13 @@
 package com.bjtu.j2ee.sport_club.domain;
 
 
+import com.bjtu.j2ee.sport_club.repository.CoachRepository;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.validator.constraints.NotEmpty;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import org.springframework.data.domain.Page;
 
 import javax.persistence.Id;
 
@@ -18,7 +19,6 @@ import javax.persistence.Id;
 
 @Entity
 @Data
-@EntityListeners(AuditingEntityListener.class)
 public class Coach implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -44,5 +44,6 @@ public class Coach implements Serializable {
 
     @OneToMany(mappedBy = "id",cascade= CascadeType.ALL,fetch= FetchType.LAZY)
     private List<Course> courseList;
+
 
 }
