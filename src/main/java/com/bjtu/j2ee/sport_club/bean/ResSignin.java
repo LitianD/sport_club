@@ -67,7 +67,7 @@ public class ResSignin {
         }
 
         public void setName(String _$Name167) {
-            this.Name = Name;
+            this.Name = _$Name167;
         }
 
         public String getMail() {

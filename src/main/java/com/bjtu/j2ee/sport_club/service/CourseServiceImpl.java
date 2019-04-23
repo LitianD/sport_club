@@ -51,27 +51,27 @@ public class CourseServiceImpl implements CourseService {
         ResCourse resCourse = new ResCourse();
         resCourse.setCode("0");
         Course course = courseRepository.findById(Integer.valueOf(reqCourse.getId())).orElse(null);
-            ResCourse.DataBean datas = new ResCourse.DataBean();
-            datas.setId(course.getId().toString());
-            datas.setName(course.getName());
-            datas.getCoach().setId(course.getCoach().getId().toString());
-            datas.getCoach().setName(course.getCoach().getName());
-            if(course.getCoach().getSex()==0){
-                datas.getCoach().setSex("女");
-            }
-            else
-                datas.getCoach().setSex("男");
-            datas.getCoach().setAge(course.getCoach().getAge().toString());
-            datas.getCoach().setPhoneNumber(course.getCoach().getPhoneNumber());
-            datas.getCoach().setMail(course.getCoach().getMail());
-            datas.getCoach().setContent(course.getCoach().getContent());
-            datas.getGym().setId(course.getGym().getId().toString());
-            datas.getGym().setName(course.getGym().getName());
-            datas.getGym().setAddress(course.getGym().getAddress());
-            datas.setCost(course.getCost().toString());
-            datas.setTime(course.getTime());
-            datas.set_$Content230(course.getContent());
-            return resCourse;
+        ResCourse.DataBean datas = new ResCourse.DataBean();
+        datas.setId(course.getId().toString());
+        datas.setName(course.getName());
+        datas.getCoach().setId(course.getCoach().getId().toString());
+        datas.getCoach().setName(course.getCoach().getName());
+        if(course.getCoach().getSex()==0){
+            datas.getCoach().setSex("女");
+        }
+        else
+            datas.getCoach().setSex("男");
+        datas.getCoach().setAge(course.getCoach().getAge().toString());
+        datas.getCoach().setPhoneNumber(course.getCoach().getPhoneNumber());
+        datas.getCoach().setMail(course.getCoach().getMail());
+        datas.getCoach().setContent(course.getCoach().getContent());
+        datas.getGym().setId(course.getGym().getId().toString());
+        datas.getGym().setName(course.getGym().getName());
+        datas.getGym().setAddress(course.getGym().getAddress());
+        datas.setCost(course.getCost().toString());
+        datas.setTime(course.getTime());
+        datas.set_$Content230(course.getContent());
+        return resCourse;
     }
 
     @Override

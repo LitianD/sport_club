@@ -22,7 +22,7 @@ public class CourseController {
 	@ResponseBody
 	public ResCourseList getCourses()
 	{
-		ResCourseList resCourseList = new ResCourseList();
+		ResCourseList resCourseList;
 		resCourseList = courseService.getCourseList();
 		return resCourseList;
 	}
@@ -31,7 +31,7 @@ public class CourseController {
 	@ResponseBody
 	public ResCourse getCourse(@RequestBody ReqCourse reqCourse)
 	{
-		ResCourse resCourse = new ResCourse();
+		ResCourse resCourse;
 		resCourse = courseService.getCourse(reqCourse);
 		return resCourse;
 	}
@@ -40,7 +40,7 @@ public class CourseController {
 	@ResponseBody
 	public ResMyCourse getMyCourse(@RequestBody ReqMyCourse reqMyCourse)
 	{
-		ResMyCourse resMyCourse = new ResMyCourse();
+		ResMyCourse resMyCourse;
 		resMyCourse = courseService.getMyCourse(reqMyCourse);
 		return resMyCourse;
 	}
@@ -49,7 +49,7 @@ public class CourseController {
 	@ResponseBody
 	public ResCoach getCouaches(@RequestBody ReqCoach reqCoach)
 	{
-		ResCoach resCoach = new ResCoach();
+		ResCoach resCoach;
 		resCoach = courseService.getCoach(reqCoach);
 		return resCoach;
 	}

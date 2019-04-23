@@ -7,7 +7,6 @@ import com.bjtu.j2ee.sport_club.repository.ContactRepository;
 import com.bjtu.j2ee.sport_club.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service
@@ -22,6 +21,8 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public ResSignup createUser(ReqSignup reqSignup){
 		ResSignup resSignup = new ResSignup();
+		System.out.println("获取名字"+reqSignup.getName());
+		System.out.println("获取用户名"+reqSignup.getUsername());
 		List<User> userList = userRepository.findByUsername(reqSignup.getName());
 		if(userList.size()==1) {
 			resSignup.setCode("-1");
@@ -36,9 +37,12 @@ public class UserServiceImpl implements UserService {
 			user.setPassword(reqSignup.getPassword());
 			user.setMail(reqSignup.getMail());
 			user.setAge(Integer.valueOf(reqSignup.getAge()));
+			user.setSex(Integer.valueOf(reqSignup.getSex()));
+			user.setPhoneNumber(reqSignup.getPhonenumber());
 			userRepository.save(user);
 
 			ResSignup.DataBean data = new ResSignup.DataBean();
+			data.setUsername(user.getUsername());
 			data.setName(user.getName());
 			data.setAge(String.valueOf(user.getAge()));
 			data.setMail(user.getMail());
@@ -61,10 +65,12 @@ public class UserServiceImpl implements UserService {
 			res.setCode("0");
 			ResSignin.DataBean data = new ResSignin.DataBean();
 			data.setName(user.getName());
+			//System.out.println(user.getName());
 			data.setAge(String.valueOf(user.getAge()));
 			data.setMail(user.getMail());
 			data.setPhonenumber(user.getPhoneNumber());
 			data.setSex(String.valueOf(user.getSex()));
+			data.setUsername(user.getUsername());
 
 			res.setData(data);
 		}
