@@ -10,6 +10,7 @@ import com.bjtu.j2ee.sport_club.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -31,10 +32,14 @@ public class CourseServiceImpl implements CourseService {
     public void SetUserResposity(UserRepository userRepository){this.userRepository = userRepository;}
     
     @Override
-    public ResCourseList getCourseList(){
+    public ResCourseList getCourseList(Integer page, Integer size){ //页数和每页大小
         ResCourseList resCourseList = new ResCourseList();
         resCourseList.setCode("0");
-        Iterable<Course> courses = courseRepository.findAll();
+
+        PageRequest pageSet = PageRequest.of(page, size);
+
+        Iterable<Course> courses = courseRepository.findAll(pageSet);
+
         List<ResCourseList.DataBean> list = new ArrayList<>();
         for(Course course : courses){
             ResCourseList.DataBean datas = new ResCourseList.DataBean();
