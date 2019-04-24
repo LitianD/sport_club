@@ -1,6 +1,8 @@
 package com.bjtu.j2ee.sport_club.bean;
 
-public class ReqUpdate {
+import java.io.Serializable;
+
+public class ReqUpdate implements Serializable {
 
     /**
      * username :

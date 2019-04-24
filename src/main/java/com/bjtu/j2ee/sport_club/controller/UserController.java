@@ -3,6 +3,7 @@ package com.bjtu.j2ee.sport_club.controller;
 import com.bjtu.j2ee.sport_club.bean.*;
 import com.bjtu.j2ee.sport_club.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,6 +37,7 @@ public class UserController {
 		resSignin = userService.searchUser(reqSignin);
 		return resSignin;
 	}
+
 
 	@RequestMapping(value = {"/update","/update/"})
 	@ResponseBody

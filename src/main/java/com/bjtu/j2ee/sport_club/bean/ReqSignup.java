@@ -1,6 +1,8 @@
 package com.bjtu.j2ee.sport_club.bean;
 
-public class ReqSignup {
+import java.io.Serializable;
+
+public class ReqSignup implements Serializable {
 
     /**
      * username :

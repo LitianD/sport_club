@@ -1,6 +1,8 @@
 package com.bjtu.j2ee.sport_club.bean;
 
-public class ReqSignin {
+import java.io.Serializable;
+
+public class ReqSignin implements Serializable {
     /**
      * username :
      * password :

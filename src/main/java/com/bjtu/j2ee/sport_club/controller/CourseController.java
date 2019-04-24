@@ -3,6 +3,7 @@ package com.bjtu.j2ee.sport_club.controller;
 import com.bjtu.j2ee.sport_club.bean.*;
 import com.bjtu.j2ee.sport_club.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +19,7 @@ public class CourseController {
 		this.courseService = courseService;
 	}
 
+	@Cacheable(value = "courseList")
 	@RequestMapping(value = {"/courses","/courses/"})
 	@ResponseBody
 	public ResCourseList getCourses()
@@ -27,6 +29,7 @@ public class CourseController {
 		return resCourseList;
 	}
 
+	@Cacheable(value = "courseInfo", key = "#reqCourse.id")
 	@RequestMapping(value = {"/coursecontent","/coursecontent/"})
 	@ResponseBody
 	public ResCourse getCourse(@RequestBody ReqCourse reqCourse)
@@ -36,6 +39,7 @@ public class CourseController {
 		return resCourse;
 	}
 
+	@Cacheable(value = "userCourseList", key = "#reqMyCourse.id")
 	@RequestMapping(value = {"/mycourses","/mycourses/"})
 	@ResponseBody
 	public ResMyCourse getMyCourse(@RequestBody ReqMyCourse reqMyCourse)
@@ -45,6 +49,7 @@ public class CourseController {
 		return resMyCourse;
 	}
 
+	@Cacheable(value = "coachList")
 	@RequestMapping(value = {"/coaches","/coaches/"})
 	@ResponseBody
 	public ResCoach getCouaches(@RequestBody ReqCoach reqCoach)

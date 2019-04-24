@@ -9,6 +9,7 @@ import lombok.ToString;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
@@ -16,7 +17,7 @@ import java.util.List;
 @Setter
 @ToString
 @EntityListeners(AuditingEntityListener.class)
-public class Gym {
+public class Gym implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;

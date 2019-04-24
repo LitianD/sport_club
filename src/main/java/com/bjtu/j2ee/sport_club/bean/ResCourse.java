@@ -1,6 +1,8 @@
 package com.bjtu.j2ee.sport_club.bean;
 
-public class ResCourse {
+import java.io.Serializable;
+
+public class ResCourse implements Serializable {
 
     /**
      * code :

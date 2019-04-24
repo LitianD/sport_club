@@ -8,6 +8,8 @@ import com.bjtu.j2ee.sport_club.repository.CoachRepository;
 import com.bjtu.j2ee.sport_club.repository.CourseRepository;
 import com.bjtu.j2ee.sport_club.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 
@@ -24,6 +26,7 @@ public class CourseServiceImpl implements CourseService {
     public void SetCoachResposity(CoachRepository coachRepository){this.coachRepository = coachRepository;}
     @Autowired
     public void SetUserResposity(UserRepository userRepository){this.userRepository = userRepository;}
+    
     @Override
     public ResCourseList getCourseList(){
         ResCourseList resCourseList = new ResCourseList();

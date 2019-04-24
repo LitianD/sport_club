@@ -1,6 +1,8 @@
 package com.bjtu.j2ee.sport_club.bean;
 
-public class ReqCoach {
+import java.io.Serializable;
+
+public class ReqCoach implements Serializable {
 
     /**
      * id :

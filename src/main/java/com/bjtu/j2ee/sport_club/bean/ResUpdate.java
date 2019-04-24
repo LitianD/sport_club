@@ -1,6 +1,8 @@
 package com.bjtu.j2ee.sport_club.bean;
 
-public class ResUpdate {
+import java.io.Serializable;
+
+public class ResUpdate implements Serializable {
 
     /**
      * code :

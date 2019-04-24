@@ -1,6 +1,8 @@
 package com.bjtu.j2ee.sport_club.domain;
 
-public class test {
+import java.io.Serializable;
+
+public class test implements Serializable {
 
 	/**
 	 * username : zlt

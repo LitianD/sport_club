@@ -1,8 +1,9 @@
 package com.bjtu.j2ee.sport_club.bean;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class ResMyCourse {
+public class ResMyCourse implements Serializable {
 
     /**
      * code :

@@ -1,6 +1,8 @@
 package com.bjtu.j2ee.sport_club.bean;
 
-public class ReqMyCourse {
+import java.io.Serializable;
+
+public class ReqMyCourse implements Serializable {
 
     /**
      * id :
