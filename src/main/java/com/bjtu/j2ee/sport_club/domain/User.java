@@ -3,11 +3,14 @@ package com.bjtu.j2ee.sport_club.domain;
 
 import lombok.Data;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -45,4 +48,10 @@ public class User implements Serializable {
 	@JoinTable(name = "user_course",joinColumns = @JoinColumn(name = "user_id"),
 			inverseJoinColumns = @JoinColumn(name = "course_id"))
 	private List<Course> CourseList;
+
+	@CreatedDate
+	private Date createAt;
+
+	@LastModifiedDate
+	private Date updateAt;
 }

@@ -7,18 +7,23 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.domain.Page;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.Id;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.Id;
 
 @Entity
 @Data
+@EntityListeners(AuditingEntityListener.class)
 public class Coach implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -45,5 +50,11 @@ public class Coach implements Serializable {
     @OneToMany(mappedBy = "id",cascade= CascadeType.ALL,fetch= FetchType.LAZY)
     private List<Course> courseList;
 
+
+    @CreatedDate
+    private Date createAt;
+
+    @LastModifiedDate
+    private Date updateAt;
 
 }

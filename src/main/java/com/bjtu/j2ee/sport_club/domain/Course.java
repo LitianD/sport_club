@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.Id;
@@ -12,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -47,5 +50,11 @@ public class Course implements Serializable {
 
     @ManyToMany(mappedBy = "CourseList")
     private List<User> userList;
+
+    @CreatedDate
+    private Date createAt;
+
+    @LastModifiedDate
+    private Date updateAt;
 
 }

@@ -1,6 +1,10 @@
 package com.bjtu.j2ee.sport_club.domain;
 
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+
 import java.io.Serializable;
+import java.util.Date;
 
 public class test implements Serializable {
 
@@ -97,4 +101,10 @@ public class test implements Serializable {
 	public void setSex(String sex) {
 		this.sex = sex;
 	}
+
+	@CreatedDate
+	private Date createAt;
+
+	@LastModifiedDate
+	private Date updateAt;
 }

@@ -3,9 +3,12 @@ package com.bjtu.j2ee.sport_club.domain;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.io.Serializable;
+import java.util.Date;
 
 @Entity
 @EntityListeners(AuditingEntityListener.class)
@@ -64,5 +67,11 @@ public class Contact implements Serializable {
     public void setAddress(String address) {
         this.address = address;
     }
+
+    @CreatedDate
+    private Date createAt;
+
+    @LastModifiedDate
+    private Date updateAt;
     
 }
