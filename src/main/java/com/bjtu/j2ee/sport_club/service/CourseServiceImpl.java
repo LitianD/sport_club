@@ -12,6 +12,9 @@ import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 @Service
 public class CourseServiceImpl implements CourseService {
@@ -32,6 +35,7 @@ public class CourseServiceImpl implements CourseService {
         ResCourseList resCourseList = new ResCourseList();
         resCourseList.setCode("0");
         Iterable<Course> courses = courseRepository.findAll();
+        List<ResCourseList.DataBean> list = new ArrayList<>();
         for(Course course : courses){
             ResCourseList.DataBean datas = new ResCourseList.DataBean();
             datas.setId(course.getId().toString());
@@ -44,8 +48,9 @@ public class CourseServiceImpl implements CourseService {
             datas.setCost(course.getCost().toString());
             datas.set_$Content206(course.getContent());
             datas.setTime(course.getTime());
-            resCourseList.getData().add(datas);
+            list.add(datas);
         }
+        resCourseList.setData(list);
         return resCourseList;
     }
 
@@ -95,7 +100,7 @@ public class CourseServiceImpl implements CourseService {
         dataBean.setPhoneNumber(coach.getPhoneNumber());
         dataBean.setMail(coach.getMail());
         dataBean.setContent(coach.getContent());
-
+        List<ResCoach.DataBean.CoursesBean> courses = new ArrayList<>();
         for(Course course : coach.getCourseList()){
             ResCoach.DataBean.CoursesBean datas= new ResCoach.DataBean.CoursesBean();
             datas.setId(course.getId().toString());
@@ -108,8 +113,10 @@ public class CourseServiceImpl implements CourseService {
             datas.setCost(course.getCost().toString());
             datas.set_$Content206(course.getContent());
             datas.setTime(course.getTime());
-            dataBean.getCourses().add(datas);
+            courses.add(datas);
         }
+        dataBean.setCourses(courses);
+        resCoach.setData(dataBean);
         return  resCoach;
     }
 
@@ -117,6 +124,7 @@ public class CourseServiceImpl implements CourseService {
     public ResMyCourse getMyCourse(ReqMyCourse reqMyCourse){
         ResMyCourse resMyCourse = new ResMyCourse();
         User user = userRepository.findById(Integer.valueOf(reqMyCourse.getId())).orElse(null);
+        List<ResMyCourse.DataBean> myCourses = new ArrayList<>();
         for(Course course : user.getCourseList()){
             ResMyCourse.DataBean dataBean = new ResMyCourse.DataBean();
             dataBean.setId(course.getId().toString());
@@ -129,8 +137,9 @@ public class CourseServiceImpl implements CourseService {
             dataBean.setCost(course.getCost().toString());
             dataBean.set_$Content100(course.getContent());
             dataBean.setTime(course.getTime());
-            resMyCourse.getData().add(dataBean);
+            myCourses.add(dataBean);
         }
+        resMyCourse.setData(myCourses);
         return  resMyCourse;
     }
 }
