@@ -25,7 +25,7 @@ public class CourseController {
 	public ResCourseList getCourses()
 	{
 		ResCourseList resCourseList;
-		resCourseList = courseService.getCourseList();
+		resCourseList = courseService.getCourseList(1,3);
 		return resCourseList;
 	}
 
