@@ -21,8 +21,6 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public ResSignup createUser(ReqSignup reqSignup){
 		ResSignup resSignup = new ResSignup();
-		System.out.println("获取名字"+reqSignup.getName());
-		System.out.println("获取用户名"+reqSignup.getUsername());
 		List<User> userList = userRepository.findByUsername(reqSignup.getName());
 		if(userList.size()==1) {
 			resSignup.setCode("-1");
@@ -65,7 +63,6 @@ public class UserServiceImpl implements UserService {
 			res.setCode("0");
 			ResSignin.DataBean data = new ResSignin.DataBean();
 			data.setName(user.getName());
-			//System.out.println(user.getName());
 			data.setAge(String.valueOf(user.getAge()));
 			data.setMail(user.getMail());
 			data.setPhonenumber(user.getPhoneNumber());

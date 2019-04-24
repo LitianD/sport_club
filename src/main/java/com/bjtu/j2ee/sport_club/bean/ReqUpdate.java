@@ -62,7 +62,7 @@ public class ReqUpdate {
         return repassword;
     }
 
-    public void setRepassword(String repasswordd) {
+    public void setRepassword(String repassword) {
         this.repassword = repassword;
     }
 

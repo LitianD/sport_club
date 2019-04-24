@@ -15,7 +15,7 @@ public class ReqSignup {
 
     private String username;
     private String password;
-    private String repasswordd;
+    private String repassword;
     //@com.google.gson.annotations.SerializedName("“name”")
     private String Name; // FIXME check this code
     private String mail;
@@ -39,12 +39,12 @@ public class ReqSignup {
         this.password = password;
     }
 
-    public String getRepasswordd() {
-        return repasswordd;
+    public String getRepassword() {
+        return repassword;
     }
 
-    public void setRepasswordd(String repasswordd) {
-        this.repasswordd = repasswordd;
+    public void setRepassword(String repassword) {
+        this.repassword = repassword;
     }
 
     public String getName() {
