@@ -1,4 +1,4 @@
-![](UML.png)
+![](uml.png)
 
 # User
 ## post /user/signup/
