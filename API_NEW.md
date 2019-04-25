@@ -139,7 +139,7 @@ code=0 data存在
 	...
 	]
 	}
-##改： get /course/show/{id}
+## 改： get /course/show/{id}
 ### Parameters
 	{
 
@@ -282,7 +282,7 @@ code=0 data存在
 	}
 	}
 
-#gym
+# gym
 
 ## 加： get /gym/list
 ### Parameters

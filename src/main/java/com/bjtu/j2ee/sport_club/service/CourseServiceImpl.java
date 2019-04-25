@@ -74,16 +74,16 @@ public class CourseServiceImpl implements CourseService {
         }
         else
             datas.getCoach().setSex("男");
-        datas.getCoach().setAge(course.getCoach().getAge().toString());
-        datas.getCoach().setPhoneNumber(course.getCoach().getPhoneNumber());
-        datas.getCoach().setMail(course.getCoach().getMail());
-        datas.getCoach().setContent(course.getCoach().getContent());
-        datas.getGym().setId(course.getGym().getId().toString());
-        datas.getGym().setName(course.getGym().getName());
-        datas.getGym().setAddress(course.getGym().getAddress());
-        datas.setCost(course.getCost().toString());
-        datas.setTime(course.getTime());
-        datas.set_$Content230(course.getContent());
+            datas.getCoach().setAge(course.getCoach().getAge().toString());
+            datas.getCoach().setPhoneNumber(course.getCoach().getPhoneNumber());
+            datas.getCoach().setMail(course.getCoach().getMail());
+            datas.getCoach().setContent(course.getCoach().getContent());
+            datas.getGym().setId(course.getGym().getId().toString());
+            datas.getGym().setName(course.getGym().getName());
+            datas.getGym().setAddress(course.getGym().getAddress());
+            datas.setCost(course.getCost().toString());
+            datas.setTime(course.getTime());
+            datas.set_$Content230(course.getContent());
         return resCourse;
     }
 
