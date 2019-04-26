@@ -87,15 +87,11 @@ code=0 data存在
 
 
 # Course
-## get /course/list
+## get /course/list/{page}/{size}
 
 展示所有course
 
 ### Parameters
-	{
-	page: 0
-	size: 10
-	}
 
 ### response
 
@@ -178,7 +174,7 @@ code=0 data存在
 ### Parameters
 传入userid或者username
 	{
-	"username":""
+	"id":""
 	}
 ### response
 	{
