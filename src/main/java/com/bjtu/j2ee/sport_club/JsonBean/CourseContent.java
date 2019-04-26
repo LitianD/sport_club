@@ -4,28 +4,28 @@ import lombok.Data;
 
 @Data
 public class CourseContent extends ResData {
-	private String id;
+	private Integer id;
 	private String name;
 	private CoachJson coach;
 	private GymJson gym;
-	private String cost;
-	private String _Content;
+	private Double cost;
+	private String content;
 	private String time;
 
 	@Data
-	public class CoachJson{
-		private String id;
+	public static class CoachJson{
+		private Integer id;
 		private String name;
-		private String sex;
-		private String age;
+		private Integer sex;
+		private Integer age;
 		private String phoneNumber;
 		private String mail;
 		private String content;
 	}
 
 	@Data
-	public class GymJson{
-		private String id;
+	public static class GymJson{
+		private Integer id;
 		private String name;
 		private String address;
 	}

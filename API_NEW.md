@@ -79,7 +79,7 @@ code=0 data存在
 			"username":"",
 			“name”:"",
 			"mail":"",
-			"phonenumber":"",
+			"phonenumber":""    ,
 			"age":"",
 			"sex":""
 			}

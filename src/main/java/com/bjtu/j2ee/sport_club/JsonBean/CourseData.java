@@ -8,7 +8,7 @@ import java.util.List;
 public class CourseData extends ResData{
 	List<CourseListItem> courseList;
 	@Data
-	public class CourseListItem {
+	public  static class CourseListItem {
 		private String id;
 		private String name;
 		private String coachName;

@@ -36,7 +36,7 @@ public class CourseServiceImpl implements CourseService {
         ResCourseList resCourseList = new ResCourseList();
         resCourseList.setCode("0");
 
-        PageRequest pageSet = PageRequest.of(0, size);
+        PageRequest pageSet = PageRequest.of(page, size);
 
         Iterable<Course> courses = courseRepository.findAll(pageSet);
 
@@ -67,6 +67,10 @@ public class CourseServiceImpl implements CourseService {
         ResCourse.DataBean datas = new ResCourse.DataBean();
         datas.setId(course.getId().toString());
         datas.setName(course.getName());
+        ResCourse.DataBean.CoachBean coachBean = new ResCourse.DataBean.CoachBean();
+        ResCourse.DataBean.GymBean gymBean =new ResCourse.DataBean.GymBean();
+        datas.setCoach(coachBean);
+        datas.setGym(gymBean);
         datas.getCoach().setId(course.getCoach().getId().toString());
         datas.getCoach().setName(course.getCoach().getName());
         if(course.getCoach().getSex()==0){
@@ -74,16 +78,18 @@ public class CourseServiceImpl implements CourseService {
         }
         else
             datas.getCoach().setSex("男");
-            datas.getCoach().setAge(course.getCoach().getAge().toString());
-            datas.getCoach().setPhoneNumber(course.getCoach().getPhoneNumber());
-            datas.getCoach().setMail(course.getCoach().getMail());
-            datas.getCoach().setContent(course.getCoach().getContent());
-            datas.getGym().setId(course.getGym().getId().toString());
-            datas.getGym().setName(course.getGym().getName());
-            datas.getGym().setAddress(course.getGym().getAddress());
-            datas.setCost(course.getCost().toString());
-            datas.setTime(course.getTime());
-            datas.set_$Content230(course.getContent());
+        datas.getCoach().setAge(course.getCoach().getAge().toString());
+        datas.getCoach().setPhoneNumber(course.getCoach().getPhoneNumber());
+        datas.getCoach().setMail(course.getCoach().getMail());
+        datas.getCoach().setContent(course.getCoach().getContent());
+        datas.getGym().setId(course.getGym().getId().toString());
+        datas.getGym().setName(course.getGym().getName());
+        datas.getGym().setAddress(course.getGym().getAddress());
+        datas.setCost(course.getCost().toString());
+        datas.setTime(course.getTime());
+        datas.set_$Content230(course.getContent());
+        resCourse.setData(datas);
+
         return resCourse;
     }
 
@@ -130,6 +136,7 @@ public class CourseServiceImpl implements CourseService {
         ResMyCourse resMyCourse = new ResMyCourse();
         User user = userRepository.findById(Integer.valueOf(reqMyCourse.getId())).orElse(null);
         List<ResMyCourse.DataBean> myCourses = new ArrayList<>();
+        resMyCourse.setCode("0");
         for(Course course : user.getCourseList()){
             ResMyCourse.DataBean dataBean = new ResMyCourse.DataBean();
             dataBean.setId(course.getId().toString());

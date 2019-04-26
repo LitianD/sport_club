@@ -5,6 +5,7 @@ import com.bjtu.j2ee.sport_club.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -20,12 +21,12 @@ public class CourseController {
 	}
 
 	@Cacheable(value = "courseList")
-	@RequestMapping(value = {"/courses","/courses/"})
+	@RequestMapping(value = {"/courses/{page}/{size}","/courses/{page}/{size}/"})
 	@ResponseBody
-	public ResCourseList getCourses()
+	public ResCourseList getCourses(@PathVariable Integer page,@PathVariable Integer size)
 	{
 		ResCourseList resCourseList;
-		resCourseList = courseService.getCourseList(1,3);
+		resCourseList = courseService.getCourseList(page,size);
 		return resCourseList;
 	}
 

@@ -2,7 +2,6 @@ package com.bjtu.j2ee.sport_club.controller;
 
 import com.bjtu.j2ee.sport_club.JsonBean.ResponseJson;
 import com.bjtu.j2ee.sport_club.bean.*;
-import com.bjtu.j2ee.sport_club.service.UserService;
 import com.bjtu.j2ee.sport_club.service.UserServiceTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
