@@ -1,15 +1,19 @@
 package com.bjtu.j2ee.sport_club.service;
 
 
+import com.bjtu.j2ee.sport_club.JsonBean.ResponseJson;
+import com.bjtu.j2ee.sport_club.JsonBean.UserData;
 import com.bjtu.j2ee.sport_club.bean.*;
 import com.bjtu.j2ee.sport_club.domain.User;
 import com.bjtu.j2ee.sport_club.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImplTest implements UserServiceTest {
 	private UserRepository userRepository;
 
 	@Autowired
@@ -18,16 +22,21 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public ResSignup createUser(ReqSignup reqSignup){
-		ResSignup resSignup = new ResSignup();
-		List<User> userList = userRepository.findByUsername(reqSignup.getName());
-		if(userList.size()==1) {
-			resSignup.setCode("-1");
-			resSignup.setError_msg("用户已经存在");
+	public ResponseJson createUser(ReqSignup reqSignup){
+		ResponseJson response = new ResponseJson();
+		List<User> userList = new ArrayList<>();
+		Iterable<User> iterableUser =userRepository.findByUsername(reqSignup.getUsername());
+		for(User user:iterableUser)
+		{
+			userList.add(user);
+		}
+		if(userList.size()>=1) {
+			response.setCode(-1);
+			response.setError_msg("用户已经存在");
 		}
 		else
 		{
-			resSignup.setCode("0");
+			response.setCode(0);
 			User user = new User();
 			user.setUsername(reqSignup.getUsername());
 			user.setName(reqSignup.getName());
@@ -38,7 +47,7 @@ public class UserServiceImpl implements UserService {
 			user.setPhoneNumber(reqSignup.getPhonenumber());
 			userRepository.save(user);
 
-			ResSignup.DataBean data = new ResSignup.DataBean();
+			UserData data = new UserData();
 			data.setUsername(user.getUsername());
 			data.setName(user.getName());
 			data.setAge(String.valueOf(user.getAge()));
@@ -46,21 +55,26 @@ public class UserServiceImpl implements UserService {
 			data.setPhonenumber(user.getPhoneNumber());
 			data.setSex(String.valueOf(user.getSex()));
 
-			resSignup.setData(data);
+			response.setData(data);
 		}
 
-		return resSignup;
+		return response;
 	}
 
 	@Override
-	public ResSignin searchUser(ReqSignin reqSignin){
-		ResSignin res = new ResSignin();
-		List<User> userList = userRepository.findByUsernameAndPassword(reqSignin.getUsername(),reqSignin.getPassword());
+	public ResponseJson searchUser(ReqSignin reqSignin){
+		ResponseJson res = new ResponseJson();
+		List<User> userList = new ArrayList<>();
+		Iterable<User> iterableUser =userRepository.findByUsernameAndPassword(reqSignin.getUsername(),reqSignin.getPassword());
+		for(User user:iterableUser)
+		{
+			userList.add(user);
+		}
 		if (userList.size()==1)
 		{
 			User user = userList.get(0);
-			res.setCode("0");
-			ResSignin.DataBean data = new ResSignin.DataBean();
+			res.setCode(0);
+			UserData data = new UserData();
 			data.setName(user.getName());
 			data.setAge(String.valueOf(user.getAge()));
 			data.setMail(user.getMail());
@@ -72,7 +86,7 @@ public class UserServiceImpl implements UserService {
 		}
 		else
 		{
-			res.setCode("-1");
+			res.setCode(-1);
 			res.setError_msg("密码错误或用户名不存在");
 		}
 
@@ -80,8 +94,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public ResUpdate updateUser(ReqUpdate reqUpdate){
-		ResUpdate res= new ResUpdate();
+	public ResponseJson updateUser(ReqUpdate reqUpdate){
+		ResponseJson res= new ResponseJson();
 		List<User> userList = userRepository.findByUsernameAndPassword(reqUpdate.getOldusername(),reqUpdate.getOldpassword());
 		if(userList.size()==1)
 		{
@@ -92,7 +106,7 @@ public class UserServiceImpl implements UserService {
 				List<User> newuserList = userRepository.findByUsernameAndPassword(reqUpdate.getUsername(),reqUpdate.getOldpassword());
 				if(newuserList.size()==1)
 				{
-					res.setCode("-1");
+					res.setCode(-1);
 					res.setError_msg("用户名已经存在");
 				}
 				else
@@ -105,9 +119,9 @@ public class UserServiceImpl implements UserService {
 					userRepository.delete(userList.get(0));
 					userRepository.save(user);
 
-					res.setCode("0");
+					res.setCode(0);
 
-					ResUpdate.DataBean data = new ResUpdate.DataBean();
+					UserData data = new UserData();
 					data.setName(user.getName());
 					data.setUsername(user.getUsername());
 					data.setAge(String.valueOf(user.getAge()));
@@ -120,13 +134,13 @@ public class UserServiceImpl implements UserService {
 			}
 			else
 			{
-				res.setCode("-1");
+				res.setCode(-1);
 				res.setError_msg("两次密码不一致");
 			}
 		}
 		else
 		{
-			res.setCode("-1");
+			res.setCode(-1);
 			res.setError_msg("旧密码错误");
 		}
 		return res;

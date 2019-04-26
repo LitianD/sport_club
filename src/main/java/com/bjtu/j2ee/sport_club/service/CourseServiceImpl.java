@@ -36,7 +36,7 @@ public class CourseServiceImpl implements CourseService {
         ResCourseList resCourseList = new ResCourseList();
         resCourseList.setCode("0");
 
-        PageRequest pageSet = PageRequest.of(page, size);
+        PageRequest pageSet = PageRequest.of(0, size);
 
         Iterable<Course> courses = courseRepository.findAll(pageSet);
 
