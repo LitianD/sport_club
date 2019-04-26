@@ -17,7 +17,7 @@
 code=0 data存在
 
 	{
-	"code":"",
+	"code":0,
 	"error_msg":"",
 	"data":{
 			"username":"",
@@ -41,7 +41,7 @@ code=0 data存在
 ### response
 
 	{
-	"code":"",
+	"code":0,
 	"error_msg":"",
 	"data":{
 			"username":"",
@@ -73,7 +73,7 @@ code=0 data存在
 ### response
 
 	{
-	"code":"",
+	"code":0,
 	"error_msg":"",
 	"data":{
 			"username":"",
@@ -100,7 +100,7 @@ code=0 data存在
 
 	{
 
-	"code":"",
+	"code":0,
 	"error_msg":"",
 	"data":
 	[
@@ -146,7 +146,7 @@ code=0 data存在
 	}
 ### response
 	{
-	"code":"",
+	"code":0,
 	"error_msg":"",
 	"data":
 	{
@@ -177,7 +177,7 @@ code=0 data存在
 ### Parameters
 传入userid或者username
 	{
-	"id":""
+	"username":""
 	}
 ### response
 	{
