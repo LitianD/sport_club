@@ -25,17 +25,17 @@ import java.util.List;
 public class Course implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
 
     private String name;
 
     @ManyToOne(cascade={CascadeType.MERGE,CascadeType.REFRESH},optional=false)//可选属性optional=false,表示author不能为空。删除文章，不影响用户
-    @JoinColumn(name="coach")//设置在article表中的关联字段(外键)
+    @JoinColumn(name="coach_id")//设置在article表中的关联字段(外键)
     private Coach coach;
 
     @ManyToOne(cascade={CascadeType.MERGE,CascadeType.REFRESH},optional=false)//可选属性optional=false,表示author不能为空。删除文章，不影响用户
-    @JoinColumn(name="gym")//设置在article表中的关联字段(外键)
+    @JoinColumn(name="gym_id")//设置在article表中的关联字段(外键)
     private Gym gym;
 
     @NotEmpty(message = "cost is required.")
