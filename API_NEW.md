@@ -174,7 +174,7 @@ code=0 data存在
 ### Parameters
 传入userid或者username
 	{
-	"id":""
+	"username":""
 	}
 ### response
 	{
