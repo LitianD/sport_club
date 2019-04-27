@@ -122,7 +122,7 @@ public class CourseServiceImplTest implements CourseServiceTest {
     public ResponseJson getMyCourse(ReqMyCourse reqMyCourse){
         ResponseJson resMyCourse = new ResponseJson();
         Iterable<User> iterableUser  = userRepository.findByUsername(reqMyCourse.getUsername());
-        if(iterableUser==null)
+        if(iterableUser==null||((List<User>) iterableUser).size()==0)
         {
             resMyCourse.setCode(-1);
             resMyCourse.setError_msg("用户不存在");

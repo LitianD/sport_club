@@ -8,13 +8,13 @@ public class ReqMyCourse implements Serializable {
      * id :
      */
 
-    private String usernmae;
+    private String username;
 
     public String getUsername() {
-        return usernmae;
+        return username;
     }
 
-    public void setUsername(String usernmae) {
-        this.usernmae = usernmae;
+    public void setUsername(String username) {
+        this.username = username;
     }
 }
