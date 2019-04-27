@@ -134,24 +134,24 @@ public class CourseServiceImpl implements CourseService {
     @Override
     public ResMyCourse getMyCourse(ReqMyCourse reqMyCourse){
         ResMyCourse resMyCourse = new ResMyCourse();
-        User user = userRepository.findById(Integer.valueOf(reqMyCourse.getId())).orElse(null);
-        List<ResMyCourse.DataBean> myCourses = new ArrayList<>();
-        resMyCourse.setCode("0");
-        for(Course course : user.getCourseList()){
-            ResMyCourse.DataBean dataBean = new ResMyCourse.DataBean();
-            dataBean.setId(course.getId().toString());
-            dataBean.setName(course.getName());
-            dataBean.setCoachName(course.getCoach().getName());
-            dataBean.setCoachID(course.getCoach().getId().toString());
-            dataBean.setGymName(course.getGym().getName());
-            dataBean.setGymID(course.getGym().getId().toString());
-            dataBean.setAddress(course.getGym().getAddress());
-            dataBean.setCost(course.getCost().toString());
-            dataBean.set_$Content100(course.getContent());
-            dataBean.setTime(course.getTime());
-            myCourses.add(dataBean);
-        }
-        resMyCourse.setData(myCourses);
+//        User user = userRepository.findById(Integer.valueOf(reqMyCourse.getId())).orElse(null);
+//        List<ResMyCourse.DataBean> myCourses = new ArrayList<>();
+//        resMyCourse.setCode("0");
+//        for(Course course : user.getCourseList()){
+//            ResMyCourse.DataBean dataBean = new ResMyCourse.DataBean();
+//            dataBean.setId(course.getId().toString());
+//            dataBean.setName(course.getName());
+//            dataBean.setCoachName(course.getCoach().getName());
+//            dataBean.setCoachID(course.getCoach().getId().toString());
+//            dataBean.setGymName(course.getGym().getName());
+//            dataBean.setGymID(course.getGym().getId().toString());
+//            dataBean.setAddress(course.getGym().getAddress());
+//            dataBean.setCost(course.getCost().toString());
+//            dataBean.set_$Content100(course.getContent());
+//            dataBean.setTime(course.getTime());
+//            myCourses.add(dataBean);
+//        }
+//        resMyCourse.setData(myCourses);
         return  resMyCourse;
     }
 }

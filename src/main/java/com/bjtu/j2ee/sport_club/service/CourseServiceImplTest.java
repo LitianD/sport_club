@@ -20,7 +20,6 @@ import javax.validation.constraints.Null;
 import java.util.ArrayList;
 import java.util.List;
 
-
 @Service
 public class CourseServiceImplTest implements CourseServiceTest {
     private CourseRepository courseRepository;
@@ -122,7 +121,13 @@ public class CourseServiceImplTest implements CourseServiceTest {
     @Override
     public ResponseJson getMyCourse(ReqMyCourse reqMyCourse){
         ResponseJson resMyCourse = new ResponseJson();
-        User user = userRepository.findById(Integer.valueOf(reqMyCourse.getId())).orElse(null);
+        Iterable<User> iterableUser  = userRepository.findByUsername(reqMyCourse.getUsername());
+        if(iterableUser==null)
+        {
+            resMyCourse.setCode(-1);
+            resMyCourse.setError_msg("用户不存在");
+        }
+        User user = ((List<User>) iterableUser).get(0);
         List<CourseData.CourseListItem> myCourses = new ArrayList<>();
         resMyCourse.setCode(0);
 
