@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class UserServiceImplTest implements UserServiceTest {
+public class UserServiceImpl implements UserService {
 	private UserRepository userRepository;
 
 	@Autowired

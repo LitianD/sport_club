@@ -2,18 +2,18 @@ package com.bjtu.j2ee.sport_club.controller;
 
 import com.bjtu.j2ee.sport_club.ResJsonBean.ResponseJson;
 import com.bjtu.j2ee.sport_club.ReqJsonBean.*;
-import com.bjtu.j2ee.sport_club.service.CourseServiceTest;
+import com.bjtu.j2ee.sport_club.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/course")
-public class CourseControllerTest {
-	CourseServiceTest courseService;
+public class CourseController {
+	CourseService courseService;
 
 	@Autowired
-	public void setCourseService(@RequestBody CourseServiceTest courseService)
+	public void setCourseService(@RequestBody CourseService courseService)
 	{
 		this.courseService = courseService;
 	}

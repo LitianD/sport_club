@@ -4,7 +4,7 @@ import com.bjtu.j2ee.sport_club.ResJsonBean.ResponseJson;
 import com.bjtu.j2ee.sport_club.ReqJsonBean.*;
 
 
-public interface CourseServiceTest {
+public interface CourseService {
 
     ResponseJson getCourseList(Integer page, Integer size);
     ResponseJson getCourse(Integer id);

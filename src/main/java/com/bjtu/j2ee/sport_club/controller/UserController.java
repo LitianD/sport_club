@@ -2,7 +2,7 @@ package com.bjtu.j2ee.sport_club.controller;
 
 import com.bjtu.j2ee.sport_club.ResJsonBean.ResponseJson;
 import com.bjtu.j2ee.sport_club.ReqJsonBean.*;
-import com.bjtu.j2ee.sport_club.service.UserServiceTest;
+import com.bjtu.j2ee.sport_club.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,11 +11,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/user")
-public class UserControllerTest {
-	UserServiceTest userServiceTest;
+public class UserController {
+	UserService userServiceTest;
 
 	@Autowired
-	void setUserService(UserServiceTest userService)
+	void setUserService(UserService userService)
 	{
 		this.userServiceTest = userService;
 	}

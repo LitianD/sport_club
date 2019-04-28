@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class CourseServiceImplTest implements CourseServiceTest {
+public class CourseServiceImpl implements CourseService {
     private CourseRepository courseRepository;
     private CoachRepository coachRepository;
     private UserRepository userRepository;
