@@ -19,14 +19,13 @@ import java.util.List;
 @Service
 public class CourseServiceImpl implements CourseService {
     private CourseRepository courseRepository;
-    private CoachRepository coachRepository;
+
     private UserRepository userRepository;
     @Autowired
     public void SetCourseRespository(CourseRepository courseRepository){
         this.courseRepository = courseRepository;
     }
-    @Autowired
-    public void SetCoachResposity(CoachRepository coachRepository){this.coachRepository = coachRepository;}
+
     @Autowired
     public void SetUserResposity(UserRepository userRepository){this.userRepository = userRepository;}
     
