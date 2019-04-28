@@ -228,7 +228,8 @@ code=0 data存在
 
 ## post /course/user_add
 ### Parameters
-传入userid或者username
+传入username
+
 	{
 	"username":"",
 	//此id为course_id
