@@ -1,22 +1,18 @@
 package com.bjtu.j2ee.sport_club.service;
 
-import com.bjtu.j2ee.sport_club.JsonBean.CourseContent;
-import com.bjtu.j2ee.sport_club.JsonBean.CourseData;
-import com.bjtu.j2ee.sport_club.JsonBean.ResData;
-import com.bjtu.j2ee.sport_club.JsonBean.ResponseJson;
-import com.bjtu.j2ee.sport_club.bean.*;
-import com.bjtu.j2ee.sport_club.domain.Coach;
+import com.bjtu.j2ee.sport_club.ResJsonBean.CourseContent;
+import com.bjtu.j2ee.sport_club.ResJsonBean.CourseData;
+import com.bjtu.j2ee.sport_club.ResJsonBean.ResponseJson;
+import com.bjtu.j2ee.sport_club.ReqJsonBean.*;
 import com.bjtu.j2ee.sport_club.domain.Course;
 import com.bjtu.j2ee.sport_club.domain.User;
 import com.bjtu.j2ee.sport_club.repository.CoachRepository;
 import com.bjtu.j2ee.sport_club.repository.CourseRepository;
 import com.bjtu.j2ee.sport_club.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
-import javax.validation.constraints.Null;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -74,7 +70,7 @@ public class CourseServiceImplTest implements CourseServiceTest {
         {
             courseData.setTotal(coursesNum);
         }
-        
+
         courseData.setCourseList(list);
         resCourseList.setData(courseData);
         return resCourseList;

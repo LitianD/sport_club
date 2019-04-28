@@ -1,4 +1,4 @@
-package com.bjtu.j2ee.sport_club.bean;
+package com.bjtu.j2ee.sport_club.ReqJsonBean;
 
 import java.io.Serializable;
 

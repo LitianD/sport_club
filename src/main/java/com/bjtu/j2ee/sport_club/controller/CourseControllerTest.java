@@ -1,7 +1,7 @@
 package com.bjtu.j2ee.sport_club.controller;
 
-import com.bjtu.j2ee.sport_club.JsonBean.ResponseJson;
-import com.bjtu.j2ee.sport_club.bean.*;
+import com.bjtu.j2ee.sport_club.ResJsonBean.ResponseJson;
+import com.bjtu.j2ee.sport_club.ReqJsonBean.*;
 import com.bjtu.j2ee.sport_club.service.CourseServiceTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;

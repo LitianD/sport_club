@@ -1,4 +1,4 @@
-package com.bjtu.j2ee.sport_club.JsonBean;
+package com.bjtu.j2ee.sport_club.ResJsonBean;
 
 import lombok.Data;
 
