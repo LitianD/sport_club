@@ -1,4 +1,4 @@
-![](uml.png)
+![](docImage/uml.png)
 
 # User
 ## post /user/signup/
