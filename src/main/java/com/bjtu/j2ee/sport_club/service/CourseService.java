@@ -9,5 +9,6 @@ public interface CourseService {
     ResponseJson getCourseList(Integer page, Integer size);
     ResponseJson getCourse(Integer id);
     ResponseJson getMyCourse(ReqMyCourse reqMyCourse);
+    ResponseJson addUserCourse(ReqAddUserCourse reqAddUserCourse);
 
 }

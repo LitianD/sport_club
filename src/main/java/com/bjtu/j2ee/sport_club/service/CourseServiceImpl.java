@@ -6,7 +6,6 @@ import com.bjtu.j2ee.sport_club.ResJsonBean.ResponseJson;
 import com.bjtu.j2ee.sport_club.ReqJsonBean.*;
 import com.bjtu.j2ee.sport_club.domain.Course;
 import com.bjtu.j2ee.sport_club.domain.User;
-import com.bjtu.j2ee.sport_club.repository.CoachRepository;
 import com.bjtu.j2ee.sport_club.repository.CourseRepository;
 import com.bjtu.j2ee.sport_club.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +20,7 @@ public class CourseServiceImpl implements CourseService {
     private CourseRepository courseRepository;
 
     private UserRepository userRepository;
+
     @Autowired
     public void SetCourseRespository(CourseRepository courseRepository){
         this.courseRepository = courseRepository;
@@ -151,5 +151,46 @@ public class CourseServiceImpl implements CourseService {
         courseData.setCourseList(myCourses);
         resMyCourse.setData(courseData);
         return  resMyCourse;
+    }
+
+    @Override
+    public ResponseJson addUserCourse(ReqAddUserCourse reqAddUserCourse)
+    {
+        ResponseJson res = new ResponseJson();
+        Iterable<User> iterableUser  = userRepository.findByUsername(reqAddUserCourse.getUsername());
+        if(iterableUser==null||((List<User>) iterableUser).size()==0)
+        {
+            res.setCode(-1);
+            res.setError_msg("用户不存在");
+        }
+        User user = ((List<User>) iterableUser).get(0);
+        Course course = courseRepository.findById(reqAddUserCourse.getId()).orElse(null);
+
+        if(course==null)
+        {
+            res.setCode(-1);
+            res.setError_msg("没有此课程");
+            return res;
+        }
+
+        List<Course> courses= user.getCourseList();
+        for(int i=0;i<courses.size();i++)
+        {
+            Integer id = courses.get(i).getId();
+            if(id==reqAddUserCourse.getId())
+            {
+                res.setCode(-1);
+                res.setError_msg("您已经添加此课程，不要重复添加");
+                return res;
+            }
+
+        }
+        courses.add(course);
+        user.setCourseList(courses);
+        userRepository.save(user);
+        res.setCode(0);
+        res.setError_msg("添加课程成功");
+
+        return  res;
     }
 }

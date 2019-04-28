@@ -44,4 +44,12 @@ public class CourseController {
 		return courseService.getMyCourse(reqMyCourse);
 	}
 
+	@Cacheable(value = "/user_add")
+	@RequestMapping(value = {"/user_add","/user_add/"})
+	@ResponseBody
+	public ResponseJson addUserCourse(@RequestBody ReqAddUserCourse reqAddUserCourse)
+	{
+		return courseService.addUserCourse(reqAddUserCourse);
+	}
+
 }

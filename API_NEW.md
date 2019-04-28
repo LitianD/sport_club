@@ -87,6 +87,7 @@ code=0 data存在
 
 
 # Course
+
 ## get /course/list/{page}/{size}
 
 展示所有course
@@ -140,11 +141,14 @@ code=0 data存在
 	    ]
 	  }
 	}
+	
 ## 改： get /course/show/{id}
+
 ### Parameters
 	{
 
 	}
+	
 ### response
 	{
 	"code":0,
@@ -174,6 +178,7 @@ code=0 data存在
 		"time":""
 	}
 	}
+	
 ## post /course/user_courses
 ### Parameters
 传入userid或者username
@@ -221,6 +226,55 @@ code=0 data存在
 	]
 	}
 
+## post /course/user_add
+### Parameters
+传入userid或者username
+	{
+	"username":"",
+	//此id为course_id
+	"id":""
+	}
+### response
+    	{
+    	"code":"",
+    	"error_msg":"",
+    	"data":
+    	[
+    	{
+    		"id":"",
+    		"name":"",
+    		
+    		"coachName":"",
+    		"coachID":"",
+    		
+    		"gymName":"",
+    		"gymID":"",
+    		"address":"",
+    		
+    		"cost":"",
+    		"content:":"",
+    		
+    		"Time":"",
+    	},
+    	{
+    		"id":"",
+    		"name":"",
+    		
+    		"coachName":"",
+    		"coachID":"",
+    		
+    		"gymName":"",
+    		"gymID":"",
+    		"address":"",
+    		
+    		"cost":"",
+    		"content:":"",
+    		
+    		"Time":"",
+    	}
+    	]
+    	}
+    	
 #coach
 
 ## 加： get /coache/list
