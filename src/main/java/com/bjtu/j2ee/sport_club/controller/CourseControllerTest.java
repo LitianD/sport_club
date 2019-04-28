@@ -1,13 +1,10 @@
 package com.bjtu.j2ee.sport_club.controller;
 
-import com.bjtu.j2ee.sport_club.JsonBean.ResData;
 import com.bjtu.j2ee.sport_club.JsonBean.ResponseJson;
 import com.bjtu.j2ee.sport_club.bean.*;
-import com.bjtu.j2ee.sport_club.service.CourseService;
 import com.bjtu.j2ee.sport_club.service.CourseServiceTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
