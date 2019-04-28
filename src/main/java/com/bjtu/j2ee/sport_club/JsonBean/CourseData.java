@@ -7,6 +7,8 @@ import java.util.List;
 @Data
 public class CourseData extends ResData{
 	List<CourseListItem> courseList;
+	Long total;
+
 	@Data
 	public  static class CourseListItem {
 		private String id;

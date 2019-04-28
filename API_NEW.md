@@ -99,42 +99,46 @@ code=0 data存在
 
 	"code":0,
 	"error_msg":"",
-	"data":
-	[
-	{
-		"id":"",
-		"name":"",
-		
-		"coachName":"",
-		"coachID":"",
-		
-		"gymName":"",
-		"gymID":"",
-		"address":"",
-		
-		"cost":"",
-		"content:":"",
-		
-		"Time":""
-	},
-	{
-		"id":"",
-		"name":"",
-		
-		"coachName":"",
-		"coachID":"",
-		
-		"gymName":"",
-		"gymID":"",
-		"address":"",
-		
-		"cost":"",
-		"content:":"",
-		
-		"Time":""
-	},
-	...
-	]
+	"data":{
+	
+	"total":,
+	"courselist":
+        [
+        {
+        	"id":"",
+        	"name":"",
+        	
+        	"coachName":"",
+        	"coachID":"",
+        	
+        	"gymName":"",
+        	"gymID":"",
+        	"address":"",
+        	
+        	"cost":"",
+        	"content:":"",
+        	
+        	"Time":""
+        },
+        {
+        	"id":"",
+        	"name":"",
+        	
+        	"coachName":"",
+        	"coachID":"",
+        	
+        	"gymName":"",
+        	"gymID":"",
+        	"address":"",
+        	
+        	"cost":"",
+        	"content:":"",
+        	
+        	"Time":""
+        },
+	    ...
+	    ]
+	  }
 	}
 ## 改： get /course/show/{id}
 ### Parameters

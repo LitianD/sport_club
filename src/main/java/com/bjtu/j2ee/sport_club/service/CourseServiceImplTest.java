@@ -35,7 +35,7 @@ public class CourseServiceImplTest implements CourseServiceTest {
     public void SetUserResposity(UserRepository userRepository){this.userRepository = userRepository;}
     
     @Override
-    public ResponseJson getCourseList(Integer page, Integer size){
+    public ResponseJson getCourseList(Integer page, Integer size) {
         ResponseJson resCourseList = new ResponseJson();
 
         resCourseList.setCode(0);
@@ -43,8 +43,9 @@ public class CourseServiceImplTest implements CourseServiceTest {
         PageRequest pageSet = PageRequest.of(page, size);
 
         Iterable<Course> courses = courseRepository.findAll(pageSet);
-
+        Long coursesNum = courseRepository.count();
         List<CourseData.CourseListItem> list = new ArrayList<>();
+
 
         if(courses==null)
         {
@@ -69,6 +70,11 @@ public class CourseServiceImplTest implements CourseServiceTest {
         }
 
         CourseData courseData = new CourseData();
+        if (coursesNum !=null)
+        {
+            courseData.setTotal(coursesNum);
+        }
+        
         courseData.setCourseList(list);
         resCourseList.setData(courseData);
         return resCourseList;
@@ -130,7 +136,6 @@ public class CourseServiceImplTest implements CourseServiceTest {
         User user = ((List<User>) iterableUser).get(0);
         List<CourseData.CourseListItem> myCourses = new ArrayList<>();
         resMyCourse.setCode(0);
-
 
         for(Course course : user.getCourseList()){
             CourseData.CourseListItem dataBean = new CourseData.CourseListItem();
