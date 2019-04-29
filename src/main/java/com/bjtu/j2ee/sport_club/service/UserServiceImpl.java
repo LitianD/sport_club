@@ -23,6 +23,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public ResponseJson createUser(ReqSignup reqSignup){
+		UserData data = new UserData();
 		ResponseJson response = new ResponseJson();
 		List<User> userList = new ArrayList<>();
 		Iterable<User> iterableUser =userRepository.findByUsername(reqSignup.getUsername());
@@ -31,8 +32,10 @@ public class UserServiceImpl implements UserService {
 			userList.add(user);
 		}
 		if(userList.size()>=1) {
-			response.setCode(-1);
-			response.setError_msg("用户已经存在");
+			response.setCode(1);
+			data.setError_msg("用户已经存在");
+			//response.setError_msg("用户已经存在");
+			response.setData(data);
 		}
 		else
 		{
@@ -47,7 +50,6 @@ public class UserServiceImpl implements UserService {
 			user.setPhoneNumber(reqSignup.getPhonenumber());
 			userRepository.save(user);
 
-			UserData data = new UserData();
 			data.setUsername(user.getUsername());
 			data.setName(user.getName());
 			data.setAge(String.valueOf(user.getAge()));
@@ -63,6 +65,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public ResponseJson searchUser(ReqSignin reqSignin){
+		UserData data = new UserData();
 		ResponseJson res = new ResponseJson();
 		List<User> userList = new ArrayList<>();
 		Iterable<User> iterableUser =userRepository.findByUsernameAndPassword(reqSignin.getUsername(),reqSignin.getPassword());
@@ -74,20 +77,20 @@ public class UserServiceImpl implements UserService {
 		{
 			User user = userList.get(0);
 			res.setCode(0);
-			UserData data = new UserData();
 			data.setName(user.getName());
 			data.setAge(String.valueOf(user.getAge()));
 			data.setMail(user.getMail());
 			data.setPhonenumber(user.getPhoneNumber());
 			data.setSex(String.valueOf(user.getSex()));
 			data.setUsername(user.getUsername());
-
 			res.setData(data);
 		}
 		else
 		{
-			res.setCode(-1);
-			res.setError_msg("密码错误或用户名不存在");
+			res.setCode(1);
+			data.setError_msg("密码错误或用户名不存在");
+			//res.setError_msg("密码错误或用户名不存在");
+			res.setData(data);
 		}
 
 		return res;
@@ -95,19 +98,21 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public ResponseJson updateUser(ReqUpdate reqUpdate){
+		UserData data = new UserData();
 		ResponseJson res= new ResponseJson();
 		List<User> userList = userRepository.findByUsernameAndPassword(reqUpdate.getOldusername(),reqUpdate.getOldpassword());
 		if(userList.size()==1)
 		{
 			User user = userList.get(0);
-
 			if(reqUpdate.getPassword().equals(reqUpdate.getRepassword()))
 			{
 				List<User> newuserList = userRepository.findByUsernameAndPassword(reqUpdate.getUsername(),reqUpdate.getOldpassword());
 				if(newuserList.size()==1)
 				{
-					res.setCode(-1);
-					res.setError_msg("用户名已经存在");
+					res.setCode(1);
+					data.setError_msg("用户名已经存在");
+					//res.setError_msg("用户名已经存在");
+					res.setData(data);
 				}
 				else
 				{
@@ -118,10 +123,8 @@ public class UserServiceImpl implements UserService {
 					user.setAge(Integer.valueOf(reqUpdate.getAge()));
 					userRepository.delete(userList.get(0));
 					userRepository.save(user);
-
 					res.setCode(0);
 
-					UserData data = new UserData();
 					data.setName(user.getName());
 					data.setUsername(user.getUsername());
 					data.setAge(String.valueOf(user.getAge()));
@@ -134,14 +137,18 @@ public class UserServiceImpl implements UserService {
 			}
 			else
 			{
-				res.setCode(-1);
-				res.setError_msg("两次密码不一致");
+				res.setCode(1);
+				data.setError_msg("两次密码不一致");
+				res.setData(data);
+				//res.setError_msg("两次密码不一致");
 			}
 		}
 		else
 		{
-			res.setCode(-1);
-			res.setError_msg("旧密码错误");
+			res.setCode(1);
+			data.setError_msg("旧密码错误");
+			res.setData(data);
+			//res.setError_msg("旧密码错误");
 		}
 		return res;
 	}
