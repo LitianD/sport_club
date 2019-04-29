@@ -12,6 +12,7 @@
 + 前端基于vue中nuxt框架构建
 + 项目基于restful接口实现前后端完全分离 [RestfulAPI](API_NEW.md)
 + 静态资源部署在nginx服务器
++ [项目部署地址](http://106.15.200.225)（存在用户 username:admin  password:admin）
 
 ## 作业报告
 
@@ -19,3 +20,4 @@
 + [第二次报告](report_2.md)
 + [第三次报告](report_3.md)
 + [第四次报告](report_4.md)
+
