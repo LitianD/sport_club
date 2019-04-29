@@ -5,7 +5,7 @@
 
 ## 1.Basic——70%（待补充 运行截图和描述）
 
-## 1.1前后端分离设计
+### 1.1前后端分离设计
 
 ![](/docImage/front_back.png)
 
@@ -43,7 +43,7 @@
 
 **Response Json设计**
 
-![](/docImage/resJson.png)
+![](/docImage/resJson1.png)
 
 ### 1.4Restful接口设计
 
