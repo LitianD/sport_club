@@ -165,10 +165,10 @@ public class CourseServiceImpl implements CourseService {
     public ResponseJson addUserCourse(ReqAddUserCourse reqAddUserCourse)
     {
         ResponseJson res = new ResponseJson();
+        ResData data = new CourseData();
         Iterable<User> iterableUser  = userRepository.findByUsername(reqAddUserCourse.getUsername());
         if(iterableUser==null||((List<User>) iterableUser).size()==0)
         {
-            ResData data = new CourseData();
             res.setCode(1);
             //res.setError_msg("用户不存在");
             data.setError_msg("用户不存在");
@@ -182,7 +182,8 @@ public class CourseServiceImpl implements CourseService {
         {
             res.setCode(1);
             //res.setError_msg("没有此课程");
-
+            data.setError_msg("没有此课程");
+            res.setData(data);
             return res;
         }
 
@@ -194,6 +195,8 @@ public class CourseServiceImpl implements CourseService {
             {
                 res.setCode(1);
                 //res.setError_msg("您已经添加此课程，不要重复添加");
+                data.setError_msg("您已经添加此课程，不要重复添加");
+                res.setData(data);
                 return res;
             }
 
