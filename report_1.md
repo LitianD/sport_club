@@ -3,9 +3,13 @@
 ----------
 
 
-# 基础设计
+## 1.Basic——70%（待补充 运行截图和描述）
 
-## 数据库设计
+## 1.1前后端分离设计
+
+![](/docImage/front_back.png)
+
+### 1.2数据库设计
 
 ![](/docImage/ER_Model.png)
 
@@ -23,46 +27,51 @@
 + coach（）
 + gym（）
 
-## 前后端分离设计
+### 1.3UML设计类图
 
-![](/docImage/front_backend.jpg)
+**Controller设计**
 
-## 其他（待补充）
+![](/docImage/controller.png)
 
+**Service设计**
 
+![](/docImage/service.png)
 
-# 作业采分点
+**Repository设计**
 
+![](/docImage/repositiory.png)
 
+**Response Json设计**
 
-## 1.Basic——70%（待补充 运行截图和描述）
+![](/docImage/resJson.png)
 
-### MVC设计结构
+### 1.4Restful接口设计
 
-### 系统功能
+[RestfulAPI](API_NEW.md)
+
+### 1.5系统功能
+
 + 登陆
 + 注册
 + 查询课程
 + 查看课程
 + 课程详情
 
-
-
 ## 2.JPA featues——15%（待补充 运行截图和描述）
 
-### 多表联查
+### 2.1多表联查
 
-### 多数据库源
+### 2.2多数据库源
 
-### 分页查询
+### 2.3分页查询
 
-### 审计
+### 2.4审计
 
 
 
 ## 3.Web Cache——15%（待补充 运行截图和描述）
 
-### Server_cache Redis
+### 3.1Server_cache Redis
 
-### Client_cache
+### 3.2Client_cache
 
