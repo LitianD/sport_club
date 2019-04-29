@@ -5,7 +5,7 @@ import lombok.Data;
 import java.io.Serializable;
 
 @Data
-public class CourseContent extends ResData  implements Serializable {
+public class CourseContent extends ResData implements Serializable {
 	private Integer id;
 	private String name;
 	private CoachJson coach;
