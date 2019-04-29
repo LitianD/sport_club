@@ -34,11 +34,9 @@ public class CourseServiceImpl implements CourseService {
     @Override
     public ResponseJson getCourseList(Integer page, Integer size) {
         ResponseJson resCourseList = new ResponseJson();
-
+        CourseData courseData = new CourseData();
         resCourseList.setCode(0);
-
         PageRequest pageSet = PageRequest.of(page, size);
-
         Iterable<Course> courses = courseRepository.findAll(pageSet);
         Long coursesNum = courseRepository.count();
         List<CourseData.CourseListItem> list = new ArrayList<>();
@@ -46,8 +44,10 @@ public class CourseServiceImpl implements CourseService {
 
         if(courses==null)
         {
-            resCourseList.setCode(-1);
-            resCourseList.setError_msg("此页为空");
+            resCourseList.setCode(1);
+            //resCourseList.setError_msg("此页为空");
+            courseData.setError_msg("此页为空");
+            resCourseList.setData(courseData);
             return resCourseList;
         }
 
@@ -66,9 +66,9 @@ public class CourseServiceImpl implements CourseService {
             list.add(data);
         }
 
-        CourseData courseData = new CourseData();
         if (coursesNum !=null)
         {
+            courseData.setError_msg("此页为空");
             courseData.setTotal(coursesNum);
         }
 
@@ -82,15 +82,18 @@ public class CourseServiceImpl implements CourseService {
         ResponseJson response = new ResponseJson();
         response.setCode(0);
         Course course = courseRepository.findById(id).orElse(null);
+        CourseContent courseContent = new CourseContent();
 
         if(course==null)
         {
-            response.setCode(-1);
-            response.setError_msg("没有此课程");
+            response.setCode(1);
+            //response.setError_msg("没有此课程");
+            courseContent.setError_msg("没有此课程");
+            response.setData(courseContent);
             return response;
         }
 
-        CourseContent courseContent = new CourseContent();
+
         CourseContent.CoachJson coachJson = new CourseContent.CoachJson();
         CourseContent.GymJson gymJson = new CourseContent.GymJson();
 
@@ -116,7 +119,6 @@ public class CourseServiceImpl implements CourseService {
         courseContent.setGym(gymJson);
 
         response.setData(courseContent);
-
         return response;
     }
 
@@ -128,11 +130,10 @@ public class CourseServiceImpl implements CourseService {
         if(iterableUser==null||((List<User>) iterableUser).size()==0)
         {
             ResData data = new CourseData();
-            resMyCourse.setCode(-1);
-            resMyCourse.setError_msg("用户不存在");
+            resMyCourse.setCode(1);
+            //resMyCourse.setError_msg("用户不存在");
             data.setError_msg("用户不存在");
             resMyCourse.setData(data);
-
             return  resMyCourse;
         }
         User user = ((List<User>) iterableUser).get(0);
@@ -168,11 +169,10 @@ public class CourseServiceImpl implements CourseService {
         if(iterableUser==null||((List<User>) iterableUser).size()==0)
         {
             ResData data = new CourseData();
-            res.setCode(-1);
-            res.setError_msg("用户不存在");
+            res.setCode(1);
+            //res.setError_msg("用户不存在");
             data.setError_msg("用户不存在");
             res.setData(data);
-
             return  res;
         }
         User user = ((List<User>) iterableUser).get(0);
@@ -180,8 +180,8 @@ public class CourseServiceImpl implements CourseService {
 
         if(course==null)
         {
-            res.setCode(-1);
-            res.setError_msg("没有此课程");
+            res.setCode(1);
+            //res.setError_msg("没有此课程");
 
             return res;
         }
@@ -192,8 +192,8 @@ public class CourseServiceImpl implements CourseService {
             Integer id = courses.get(i).getId();
             if(id==reqAddUserCourse.getId())
             {
-                res.setCode(-1);
-                res.setError_msg("您已经添加此课程，不要重复添加");
+                res.setCode(1);
+                //res.setError_msg("您已经添加此课程，不要重复添加");
                 return res;
             }
 
@@ -202,7 +202,7 @@ public class CourseServiceImpl implements CourseService {
         user.setCourseList(courses);
         userRepository.save(user);
         res.setCode(0);
-        res.setError_msg("添加课程成功");
+        //res.setError_msg("添加课程成功");
 
         return  res;
     }

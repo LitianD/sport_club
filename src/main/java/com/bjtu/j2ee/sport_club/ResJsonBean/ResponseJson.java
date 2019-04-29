@@ -7,6 +7,6 @@ import java.io.Serializable;
 @Data
 public class ResponseJson implements Serializable {
 	private Integer code;
-	private String error_msg;
+	//private String error_msg;
 	private ResData data;
 }
