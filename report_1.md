@@ -25,7 +25,7 @@
 
 ## 前后端分离设计
 
-![](/docImage/front_backend.jpg)
+![](/docImage/front_back.png)
 
 ## 其他（待补充）
 

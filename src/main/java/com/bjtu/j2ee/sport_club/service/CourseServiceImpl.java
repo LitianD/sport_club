@@ -2,6 +2,7 @@ package com.bjtu.j2ee.sport_club.service;
 
 import com.bjtu.j2ee.sport_club.ResJsonBean.CourseContent;
 import com.bjtu.j2ee.sport_club.ResJsonBean.CourseData;
+import com.bjtu.j2ee.sport_club.ResJsonBean.ResData;
 import com.bjtu.j2ee.sport_club.ResJsonBean.ResponseJson;
 import com.bjtu.j2ee.sport_club.ReqJsonBean.*;
 import com.bjtu.j2ee.sport_club.domain.Course;
@@ -125,8 +126,13 @@ public class CourseServiceImpl implements CourseService {
         Iterable<User> iterableUser  = userRepository.findByUsername(reqMyCourse.getUsername());
         if(iterableUser==null||((List<User>) iterableUser).size()==0)
         {
+            ResData data = new CourseData();
             resMyCourse.setCode(-1);
             resMyCourse.setError_msg("用户不存在");
+            data.setError_msg("用户不存在");
+            resMyCourse.setData(data);
+
+            return  resMyCourse;
         }
         User user = ((List<User>) iterableUser).get(0);
         List<CourseData.CourseListItem> myCourses = new ArrayList<>();
@@ -160,8 +166,13 @@ public class CourseServiceImpl implements CourseService {
         Iterable<User> iterableUser  = userRepository.findByUsername(reqAddUserCourse.getUsername());
         if(iterableUser==null||((List<User>) iterableUser).size()==0)
         {
+            ResData data = new CourseData();
             res.setCode(-1);
             res.setError_msg("用户不存在");
+            data.setError_msg("用户不存在");
+            res.setData(data);
+
+            return  res;
         }
         User user = ((List<User>) iterableUser).get(0);
         Course course = courseRepository.findById(reqAddUserCourse.getId()).orElse(null);
@@ -170,6 +181,7 @@ public class CourseServiceImpl implements CourseService {
         {
             res.setCode(-1);
             res.setError_msg("没有此课程");
+
             return res;
         }
 
