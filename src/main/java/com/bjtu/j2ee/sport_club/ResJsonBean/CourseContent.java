@@ -2,8 +2,10 @@ package com.bjtu.j2ee.sport_club.ResJsonBean;
 
 import lombok.Data;
 
+import java.io.Serializable;
+
 @Data
-public class CourseContent extends ResData {
+public class CourseContent extends ResData  implements Serializable {
 	private Integer id;
 	private String name;
 	private CoachJson coach;
@@ -13,7 +15,7 @@ public class CourseContent extends ResData {
 	private String time;
 
 	@Data
-	public static class CoachJson{
+	public static class CoachJson implements Serializable{
 		private Integer id;
 		private String name;
 		private Integer sex;
@@ -24,7 +26,7 @@ public class CourseContent extends ResData {
 	}
 
 	@Data
-	public static class GymJson{
+	public static class GymJson implements Serializable{
 		private Integer id;
 		private String name;
 		private String address;

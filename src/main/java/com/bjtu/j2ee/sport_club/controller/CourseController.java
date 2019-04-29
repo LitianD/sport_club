@@ -27,7 +27,7 @@ public class CourseController {
 		return courseService.getCourseList(page,size);
 	}
 
-	@Cacheable(value = "courseInfo", key = "#reqCourse.id")
+	@Cacheable(value = "courseInfo", key = "#id")
 	@RequestMapping(value = {"/show/{id}","/course/show/{id}/"})
 	@ResponseBody
 	public ResponseJson getCourseContent (@PathVariable Integer id)
@@ -36,7 +36,7 @@ public class CourseController {
 		return courseService.getCourse(id);
 	}
 
-	@Cacheable(value = "/user_courses")
+	@Cacheable(value = "/user_courses", key = "#reqMyCourse.username")
 	@RequestMapping(value = {"/mycourses","/mycourses/"})
 	@ResponseBody
 	public ResponseJson getUserCourse(@RequestBody ReqMyCourse reqMyCourse)
@@ -44,7 +44,6 @@ public class CourseController {
 		return courseService.getMyCourse(reqMyCourse);
 	}
 
-	@Cacheable(value = "/user_add")
 	@RequestMapping(value = {"/user_add","/user_add/"})
 	@ResponseBody
 	public ResponseJson addUserCourse(@RequestBody ReqAddUserCourse reqAddUserCourse)

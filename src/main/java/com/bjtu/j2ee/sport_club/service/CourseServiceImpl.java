@@ -9,6 +9,7 @@ import com.bjtu.j2ee.sport_club.domain.User;
 import com.bjtu.j2ee.sport_club.repository.CourseRepository;
 import com.bjtu.j2ee.sport_club.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 

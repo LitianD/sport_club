@@ -2,15 +2,16 @@ package com.bjtu.j2ee.sport_club.ResJsonBean;
 
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.List;
 
 @Data
-public class CourseData extends ResData{
+public class CourseData extends ResData  implements Serializable {
 	List<CourseListItem> courseList;
 	Long total;
 
 	@Data
-	public  static class CourseListItem {
+	public  static class CourseListItem implements Serializable{
 		private String id;
 		private String name;
 		private String coachName;

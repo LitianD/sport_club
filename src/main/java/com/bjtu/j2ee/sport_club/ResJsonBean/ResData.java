@@ -1,4 +1,6 @@
 package com.bjtu.j2ee.sport_club.ResJsonBean;
 
-public abstract class ResData  {
+import java.io.Serializable;
+
+public abstract class ResData implements Serializable {
 }
