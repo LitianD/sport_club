@@ -2,6 +2,7 @@
 
 ----------
 
++ [项目部署地址](http://106.15.200.225)（存在用户 username:admin  password:admin）
 
 ## 1.Basic——70%（待补充 运行截图和描述）
 
