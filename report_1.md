@@ -54,6 +54,7 @@
 
 + 登陆
     -
+
     ![](/docImage/loginPage.png)
     点击网址可以进入登陆页面，有两个输入框，分别输入账号密码可以登陆（内置账号admin/admin）即可以登陆。
 + 注册
@@ -81,23 +82,36 @@
 
 ### 2.1多表联查
 
-+ 在查看课程详情接口中，联合教练信息表和健身房表进行三个表一起连表查询
++ 多表联查主要体现在course实体与其他实体之间
+
++ course实体实现
+![](/docImage/course_other.png)
+
++ gym实体实现 course与gym为 ManyToOne
+
+![](/docImage/gym_course.png)
+
++ coach实体实现 course与coach为 ManyToOne
+
+![](/docImage/coach_course.png)
+
++ user实体实现 course与user为 ManyToMany
+
+![](/docImage/user_course.png)
 
 ### 2.2多数据库源
 
 ### 2.3分页查询
 
-+ 在查看课程列表的接口中，前端返回列表的页数和每页课程条目数，后端使用JPA的分页功能，并返回前端这页的课程简介数组和课程总数。
-
 ### 2.4审计
 
 + 在数据库实体类中，我们使用了JPA的审计功能，此功能可以自动记录条目创建和修改的时间戳。
 
-## 3.Web Cache——15%（待补充 运行截图和描述）
+## 3.Web Cache Redis（待补充 运行截图和描述）
 
 ### 3.1Server_cache Redis（实现缓存加速功能的接口）
+
 + 查看课程列表
 + 查看课程详情
 
-### 3.2Client_cache
 
