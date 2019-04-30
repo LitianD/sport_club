@@ -161,11 +161,19 @@ api设计时候加入page和size选项
 
 + 在数据库实体类中，我们使用了JPA的审计功能，此功能可以自动记录条目创建和修改的时间戳。
 
-## 3.Web Cache Redis（待补充 运行截图和描述）
+## 3.Web Cache Redis
 
-### 3.1Server_cache Redis（实现缓存加速功能的接口）
+### 3.1Server_cache Redis
 
 + 查看课程列表
+    -
+    在函数前添加注解
+    @Cacheable(value = "courseList")、
+    系统自动生成键值对存入redis缓存中，加速数据的查询。
+    
+    
 + 查看课程详情
-
-
+    -
+    在函数前添加注解
+    @Cacheable(value = "courseInfo", key = "#id")
+    系统根据课程id作为键存入redis缓存中，加速数据的查询。
