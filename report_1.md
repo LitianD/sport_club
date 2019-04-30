@@ -39,13 +39,13 @@
 + course与gym关系为 ManyToOne
 + course与gym关系为 ManyToOne
 
-设计数据表有（待补充完整）
+设计数据表
 
-+ user()
-+ user_course()
-+ course（）
-+ coach（）
-+ gym（）
++ USER(**ID**,AGE,CREATE_AT,MAIL,NAME,PASSWORD,PHONE_NUMBER,ROLE,SEX,UPDATE_AT,USERNAME)
++ USER_COURSE(**USER_ID**,**COURSE_ID**)
++ COURSE（**ID**,TIME,CONTENT,COST,CREATE_AT,NAME,UPDATE_AT,COACH_ID,GYM_ID）
++ COACH（**ID**,AGE,CREATE_AT,MAIL,NAME,PASSWORD,PHONE_NUMBER,ROLE,SEX,UPDATE_AT,USERNAME）
++ GYM（**ID**,ADDRESS,CREATE_AT,NAME,UPDATE_AT）
 
 ### 1.3UML设计类图
 
@@ -143,14 +143,14 @@
 
 api设计时候加入page和size选项
 
-    	@Cacheable(value = "courseList")
-    	@RequestMapping(value = {"/list/{page}/{size}","/courses/{page}/{size}/"})
-    	@ResponseBody
-    	public ResponseJson getCourses(@PathVariable Integer page, @PathVariable Integer size)
-    	{
+    @Cacheable(value = "courseList")
+    @RequestMapping(value = {"/list/{page}/{size}","/courses/{page}/{size}/"})
+    @ResponseBody
+    public ResponseJson getCourses(@PathVariable Integer page, @PathVariable Integer size)
+    {
     
-    		return courseService.getCourseList(page,size);
-    	}
+    	return courseService.getCourseList(page,size);
+    }
 
 数据库查询时候返回分页查询结果
 
