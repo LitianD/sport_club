@@ -2,9 +2,28 @@
 
 ----------
 
-+ [项目部署地址](http://106.15.200.225)（存在用户 username:admin  password:admin）
+[项目部署地址](http://106.15.200.225)（存在用户 username:admin  password:admin）
 
-## 1.Basic——70%（待补充 运行截图和描述）
+<!-- TOC -->
+
+- [report_1](#report_1)
+    - [1.Basic（待补充 运行截图和描述）](#1basic待补充-运行截图和描述)
+        - [1.1 前后端分离设计](#11前后端分离设计)
+        - [1.2 数据库设计](#12数据库设计)
+        - [1.3 UML设计类图](#13uml设计类图)
+        - [1.4 Restful接口设计](#14restful接口设计)
+        - [1.5 系统功能](#15系统功能)
+    - [2. JPA featues（待补充 运行截图和描述）](#2jpa-featues待补充-运行截图和描述)
+        - [2.1 多表联查](#21多表联查)
+        - [2.2 多数据库源](#22多数据库源)
+        - [2.3 分页查询](#23分页查询)
+        - [2.4 审计](#24审计)
+    - [3.Web Cache Redis（待补充 运行截图和描述）](#3web-cache-redis待补充-运行截图和描述)
+        - [3.1Server_cache Redis（实现缓存加速功能的接口）](#31server_cache-redis实现缓存加速功能的接口)
+
+<!-- /TOC -->
+
+## 1.Basic（待补充 运行截图和描述）
 
 ### 1.1前后端分离设计
 
@@ -78,7 +97,7 @@
     用户可以点击课程列表右侧的订阅按钮来订阅课程，订阅成功则会弹出订阅成功的提示，如果已经订阅过也会有订阅失败的提示。当用户订阅成功后，可以去用户的个人中心查看。
 
 
-## 2.JPA featues——15%（待补充 运行截图和描述）
+## 2.JPA featues（待补充 运行截图和描述）
 
 ### 2.1多表联查
 
@@ -101,6 +120,25 @@
 
 ### 2.2多数据库源
 
+使用两个基于h2的数据库源 application.properties配置如下
+
+
+	//datasource 1
+	spring.datasource.primary.url =jdbc:h2:mem:db1
+	spring.datasource.primary.username = root
+	spring.datasource.primary.password = root
+	spring.datasource.primary.driverClassName = org.h2.Driver
+	spring.datasource.primary.data=classpath:db/data.sql
+	//datasource 2
+	spring.datasource.secondary.url =jdbc:h2:mem:db2
+	spring.datasource.secondary.username = root
+	spring.datasource.secondary.password = root
+	spring.datasource.secondary.driverClassName = org.h2.Driver
+	spring.datasource.secondary.data=classpath:db/data.sql
+
+并且在配置文件中配置相应启动项
+
+![](docImage/mutil_datasource.png)
 ### 2.3分页查询
 
 ### 2.4审计
