@@ -141,6 +141,22 @@
 ![](docImage/mutil_datasource.png)
 ### 2.3分页查询
 
+api设计时候加入page和size选项
+
+    	@Cacheable(value = "courseList")
+    	@RequestMapping(value = {"/list/{page}/{size}","/courses/{page}/{size}/"})
+    	@ResponseBody
+    	public ResponseJson getCourses(@PathVariable Integer page, @PathVariable Integer size)
+    	{
+    
+    		return courseService.getCourseList(page,size);
+    	}
+
+数据库查询时候返回分页查询结果
+
+     PageRequest pageSet = PageRequest.of(page, size);
+     Iterable<Course> courses = courseRepository.findAll(pageSet);
+
 ### 2.4审计
 
 + 在数据库实体类中，我们使用了JPA的审计功能，此功能可以自动记录条目创建和修改的时间戳。
