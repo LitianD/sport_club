@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 
 @RestController
-public class rootController {
+public class RootController {
 
     @ApiOperation(value="获得/目录下的接口url")
     @RequestMapping(value = {"/"},method = RequestMethod.GET)
