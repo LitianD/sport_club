@@ -1,11 +1,15 @@
 package com.bjtu.j2ee.sport_club.controller;
 
+import com.bjtu.j2ee.sport_club.ResJsonBean.ResData;
 import com.bjtu.j2ee.sport_club.ResJsonBean.ResponseJson;
 import com.bjtu.j2ee.sport_club.ReqJsonBean.*;
+import com.bjtu.j2ee.sport_club.service.AccessLimitService;
 import com.bjtu.j2ee.sport_club.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.*;
+
+import java.text.SimpleDateFormat;
 
 @RestController
 @RequestMapping("/course")
@@ -18,13 +22,26 @@ public class CourseController {
 		this.courseService = courseService;
 	}
 
-	@Cacheable(value = "courseList")
+	@Autowired
+	private AccessLimitService accessLimitService;
+
+	//@Cacheable(value = "courseList")
 	@RequestMapping(value = {"/list/{page}/{size}","/courses/{page}/{size}/"})
 	@ResponseBody
 	public ResponseJson getCourses(@PathVariable Integer page, @PathVariable Integer size)
 	{
 
-		return courseService.getCourseList(page,size);
+		//尝试获取令牌
+		if(accessLimitService.tryAcquire()){
+			return courseService.getCourseList(page,size);
+		}else{
+			ResponseJson responseJson = new ResponseJson();
+			responseJson.setCode(-1);
+			responseJson.setData(new ResData() {
+				private String error_msg = "access limit";
+			});
+			return responseJson;
+		}
 	}
 
 	@Cacheable(value = "courseInfo", key = "#id")
