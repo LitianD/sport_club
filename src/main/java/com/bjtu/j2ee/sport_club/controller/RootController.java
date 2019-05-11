@@ -5,17 +5,26 @@ import com.bjtu.j2ee.sport_club.ResJsonBean.ResponseJson;
 import com.bjtu.j2ee.sport_club.ResJsonBean.UrlData;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.servlet.mvc.LastModified;
 
 import java.util.ArrayList;
+import javax.servlet.http.HttpServletRequest;
 
 @RestController
-public class RootController {
+public class RootController implements LastModified {
+
+    private long lastModified = System.currentTimeMillis();
 
     @ApiOperation(value="获得/目录下的接口url")
     @RequestMapping(value = {"/"},method = RequestMethod.GET)
     @ResponseBody
-    public ResponseJson gerRootUrl()
+    public ResponseJson gerRootUrl(WebRequest webRequest, HttpServletRequest request)
     {
+        if(webRequest.checkNotModified(lastModified)){
+            System.out.println("check : "+lastModified);
+            return null;
+        }
         UrlData result = new UrlData();
         result.set_links(new UrlData.links());
         result.get_links().setHrefs(new ArrayList<String>());
@@ -28,8 +37,13 @@ public class RootController {
     @ApiOperation(value="获得/course目录下的接口url")
     @RequestMapping(value = {"/course"},method = RequestMethod.GET)
     @ResponseBody
-    public ResponseJson getCourseUrl()
+    public ResponseJson getCourseUrl(WebRequest webRequest, HttpServletRequest request)
     {
+        if(webRequest.checkNotModified(lastModified)){
+            System.out.println("check : "+lastModified);
+            return null;
+        }
+
         UrlData result = new UrlData();
         result.set_links(new UrlData.links());
         result.get_links().setHrefs(new ArrayList<String>());
@@ -44,8 +58,13 @@ public class RootController {
     @ApiOperation(value="获得/user目录下的接口url")
     @RequestMapping(value = {"/user"},method = RequestMethod.GET)
     @ResponseBody
-    public ResponseJson getUserUrl()
+    public ResponseJson getUserUrl(WebRequest webRequest, HttpServletRequest request)
     {
+        if(webRequest.checkNotModified(lastModified)){
+            System.out.println("check : "+lastModified);
+            return null;
+        }
+
         UrlData result = new UrlData();
         result.set_links(new UrlData.links());
         result.get_links().setHrefs(new ArrayList<String>());
@@ -54,5 +73,10 @@ public class RootController {
         result.get_links().getHrefs().add("/user/update/");
 
         return result;
+    }
+
+    @Override
+    public long getLastModified(HttpServletRequest httpServletRequest) {
+        return lastModified;
     }
 }

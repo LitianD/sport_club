@@ -12,22 +12,25 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.web.servlet.mvc.LastModified;
 
+import javax.servlet.http.HttpServletRequest;
 import java.text.SimpleDateFormat;
 
 @RestController
 @RequestMapping("/course")
 @Api(value = "CourseController|一个用于课程信息管理的控制器")
-public class CourseController {
-	CourseService courseService;
+public class CourseController{
 
-
+    CourseService courseService;
 
 	@Autowired
 	public void setCourseService(@RequestBody CourseService courseService)
 	{
 		this.courseService = courseService;
 	}
+
+
 
 	@Autowired
 	private AccessLimitService accessLimitService;
@@ -49,6 +52,7 @@ public class CourseController {
 		if(accessLimitService.tryAcquire()){
 			return courseService.getCourseList(page,size);
 		}else{
+
 			ResponseJson responseJson = new ResponseJson();
 			responseJson.setCode(-1);
 			responseJson.setData(new ResData() {
