@@ -49,7 +49,21 @@
 - 我们在获取课程列表的接口（因为我们认为这个接口的开销最大，应该
 添加限流）中调用了获取令牌的函数。
 
-![](/docImage/limit.jpg)
+- 代码如下
+
+		//尝试获取令牌
+		if(accessLimitService.tryAcquire()){
+			return courseService.getCourseList(page,size);
+		}else{
+
+			ResponseJson responseJson = new ResponseJson();
+			responseJson.setCode(-1);
+			responseJson.setData(new ResData() {
+				private String error_msg = "access limit";
+			});
+			return responseJson;
+		}
+
 ### 2.2 Nginx 限流
 
 + limit_req_zone 用来限制单位时间内的请求数，即速率限制,采用的漏桶算法 “leaky bucket” 
