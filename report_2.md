@@ -67,7 +67,15 @@
 ## 4.Online API Doucument
 
 ### 4.1 Swagger的使用
++ 对Swagger2进行类的配置和修改
 ![](/docImage/Swagger2.png)
+
++ 使用Swagger2对Controller进行注解来生成注释
+![](/docImage/Controller-Swagger2.png)
+
++ 生成的相关controller文档
+![](/docImage/Controller-documents.png)
+
 ## 5.Oauth Authetication
 
 
