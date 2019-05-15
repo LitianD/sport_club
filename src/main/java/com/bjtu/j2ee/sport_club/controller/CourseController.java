@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.text.SimpleDateFormat;
 
 @RestController
-@RequestMapping("/course")
+@RequestMapping("/api/v1/course")
 @Api(value = "CourseController|一个用于课程信息管理的控制器")
 public class CourseController{
 

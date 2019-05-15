@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/api/v1/user")
 @Api(value = "UserController|一个用于用户信息管理的控制器")
 public class UserController {
 	UserService userServiceTest;

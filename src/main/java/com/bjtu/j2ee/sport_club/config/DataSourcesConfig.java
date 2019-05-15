@@ -14,7 +14,6 @@ import javax.sql.DataSource;
 @Configuration
 public class DataSourcesConfig {
 
-
 	//Primary库
 	@Primary
 	@Bean(name = "primaryDataSourceProperties")

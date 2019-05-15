@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 
 @RestController
+@RequestMapping("/api/v1")
 public class RootController implements LastModified {
 
     private long lastModified = System.currentTimeMillis();
