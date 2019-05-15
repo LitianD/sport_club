@@ -74,7 +74,7 @@
 ![](/docImage/Controller-Swagger2.png)
 
 + 生成的相关controller文档
-![](/docImage/Controller-documents.png)
+![](/docImage/Controller-Documents.png)
 
 ## 5.Oauth Authetication
 
