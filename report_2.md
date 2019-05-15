@@ -138,7 +138,7 @@
 ![](/docImage/courseFirst.jpg)
 - 当第一次调用course接口的时候在返回的信息的header中有最近修改的时间。
 ---
-![](/docImage/courseSecond.jpg)
+![](/docImage/courseSecond.png)
 - 当第二次访问的时候将时间放入到header中时便不再返回相同的信息。
 ## 7.Hateos
 
