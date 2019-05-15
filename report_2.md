@@ -108,7 +108,16 @@
 
 ### 6.2 Http cache
 
++ 我们的项目中一些接口实现了对于httpchache的缓存，通过返回和接收
+时间戳来使用http cache。
++ 使用了Http cache的接口是RootController下的所有接口
 
+
+![](/docImage/courseFirst.jpg)
+- 当第一次调用course接口的时候在返回的信息的header中有最近修改的时间。
+---
+![](/docImage/courseSecond.jpg)
+- 当第二次访问的时候将时间放入到header中时便不再返回相同的信息。
 ## 7.Hateos
 
 当用户访问固定路径`/` `/user` `/course` `/coach` `gym`时候返回连接：
