@@ -106,6 +106,19 @@ code=0 data存在
         [
         {
         	"id":"",
+		
+		"courseLink":"",
+		"links":
+		[
+			"hrefs":
+			{
+				String:
+				{""}
+				{""}
+				...
+			}
+		]
+		
         	"name":"",
         	
         	"coachName":"",
