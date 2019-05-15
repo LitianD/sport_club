@@ -47,6 +47,7 @@ public class RootController implements LastModified {
 
         UrlData result = new UrlData();
         result.set_links(new UrlData.links());
+        result.setCode(1);
         result.get_links().setHrefs(new ArrayList<String>());
         result.get_links().getHrefs().add("/course/List/0/5");
         result.get_links().getHrefs().add("/course/show/0");

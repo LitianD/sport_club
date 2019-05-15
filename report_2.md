@@ -100,3 +100,14 @@
 
 ## 7.Hateos
 
+当用户访问固定路径`/` `/user` `/course` `/coach` `gym`时候返回连接：
+
+![](/docImage/Hateos.png)
+
+返回json类图为：
+
+![](/docImage/Hateos_1.png)
+
+
+
+
