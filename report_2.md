@@ -16,6 +16,7 @@
     - [3. API设计](#3-api设计)
         - [3.1 RESTFul风格设计](#31-restful风格设计)
     - [4.Online API Doucument](#4online-api-doucument)
+        - [4.1 Swagger的使用](#41-Swagger的使用)    	
     - [5.Oauth Authetication](#5oauth-authetication)
     - [6.Cache](#6cache)
         - [6.1 Redis Cache](#61-redis-cache)
@@ -65,6 +66,8 @@
 
 ## 4.Online API Doucument
 
+### 4.1 Swagger的使用
+![](/docImage/Swagger2.png)
 ## 5.Oauth Authetication
 
 
