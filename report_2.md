@@ -16,6 +16,7 @@
     - [3. API设计](#3-api设计)
         - [3.1 RESTFul风格设计](#31-restful风格设计)
     - [4.Online API Doucument](#4online-api-doucument)
+        - [4.1 Swagger的使用](#41-Swagger的使用)    	
     - [5.Oauth Authetication](#5oauth-authetication)
     - [6.Cache](#6cache)
         - [6.1 Redis Cache](#61-redis-cache)
@@ -41,6 +42,28 @@
 
 ### 2.1 Guava 限流
 
+- 在我们的项目中实现了一个名为AccessLimitService的类，
+这个类中定义了令牌的生成情况。我们定义每秒钟产生0.2个令牌即
+每五秒可以获得一个令牌。
+
+- 我们在获取课程列表的接口（因为我们认为这个接口的开销最大，应该
+添加限流）中调用了获取令牌的函数。
+
+- 代码如下
+
+		//尝试获取令牌
+		if(accessLimitService.tryAcquire()){
+			return courseService.getCourseList(page,size);
+		}else{
+
+			ResponseJson responseJson = new ResponseJson();
+			responseJson.setCode(-1);
+			responseJson.setData(new ResData() {
+				private String error_msg = "access limit";
+			});
+			return responseJson;
+		}
+
 ### 2.2 Nginx 限流
 
 + limit_req_zone 用来限制单位时间内的请求数，即速率限制,采用的漏桶算法 “leaky bucket” 
@@ -64,6 +87,16 @@
 [sportClub API Version1.0](API_V1.md)
 
 ## 4.Online API Doucument
+
+### 4.1 Swagger的使用
++ 对Swagger2进行类的配置和修改
+![](/docImage/Swagger2.png)
+
++ 使用Swagger2对Controller进行注解来生成注释
+![](/docImage/Controller-Swagger2.png)
+
++ 生成的相关controller文档
+![](/docImage/Controller-Documents.png)
 
 ## 5.Oauth Authetication
 
@@ -97,7 +130,16 @@
 
 ### 6.2 Http cache
 
++ 我们的项目中一些接口实现了对于httpchache的缓存，通过返回和接收
+时间戳来使用http cache。
++ 使用了Http cache的接口是RootController下的所有接口
 
+
+![](/docImage/courseFirst.jpg)
+- 当第一次调用course接口的时候在返回的信息的header中有最近修改的时间。
+---
+![](/docImage/courseSecond.png)
+- 当第二次访问的时候将时间放入到header中时便不再返回相同的信息。
 ## 7.Hateos
 
 当用户访问固定路径`/` `/user` `/course` `/coach` `gym`时候返回连接：
