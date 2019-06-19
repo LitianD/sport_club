@@ -10,7 +10,7 @@
 
 - [report_4](#report_4)
     - [1. Basic](#1-basic)
-        - [1.1 webflux机构设计](#11-webflux机构设计)
+        - [1.1 webflux机构设计](#11-webflux结构设计)
         - [1.2 数据库设计](#12-数据库设计)
         - [1.3 整体类图设计](#13-整体类图设计)
         - [1.4 Restful接口设计](#14-restful接口设计)
@@ -27,7 +27,7 @@
 
 ## 1. Basic
 
-### 1.1 webflux机构设计
+### 1.1 webflux结构设计
 
 ![](/docImage/webflux.png)
 
