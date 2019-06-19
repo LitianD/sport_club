@@ -113,3 +113,11 @@
 ![](/docImage/oauth_2.png) 
 
 ## 5. 程序运行截图
+
+![](/docImage/user_post.png) 
+
++ 将json格式的user的注册信息通过POSTMAN发送给UserRouter，Router根据自身规则识别后发现为Save信息，然后调用Handler中的Save方法进行保存和返回。
+
+![](/docImage/user_get.png) 
+
++ 通过POSTMAN给UserRouter发送get请求，UserRouter调用UserHandler的Get方法，之后将当前所有的User信息进行返回；由上图我们可以看到返回的是刚刚新创建的User信息。
